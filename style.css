@@ -1,0 +1,33 @@
+footer {
+	background-color: #12086F;
+	padding: 25px;
+	text-align: center;
+}
+
+footer ul li, footer small{
+	color: white;
+}
+
+/* unvisited link */
+footer a:link {
+  color: white;
+}
+
+/* visited link */
+footer a:visited {
+  color: #82EEFD;
+}
+
+/* mouse over link */
+footer a:hover {
+  color: orange;
+}
+
+/* selected link */
+footer a:active {
+  color: blue;
+}
+
+ul {
+	list-style-type: none;
+}
