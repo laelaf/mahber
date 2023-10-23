@@ -1,0 +1,112 @@
+<!doctype html>
+<!-- Authors:
+    Saly Camara
+    Eisha Basit
+    Prudhvi Raju
+    Laelaf Mengistie-->
+<!--submit-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Mahber Home</title>
+        <link rel='stylesheet' href = 'style.css'/>
+    </head>
+
+    <body>
+        <div id = 'page-container'>
+            <nav>
+                <div class = 'logo'>
+                    <img src = 'images/mahber_logo2.png'>
+                </div>
+                <ul>
+                    <li><a href = 'index.html'>Home</a></li>
+                    <li><a href = 'login.html'>Login</a></li>
+                    <li><a href = 'register_user.html'>Register</a></li>
+                 </ul>
+            </nav>
+            <div id = 'content-wrap'>
+
+                <!-- any content should be between the content wrap div-->
+
+                <form> 
+                    <fieldset>
+                        <legend>Create New Group</legend><br>
+                        <p>
+                            <label>Group Name: </label> 
+                            <input type = 'text' name = 'group name' placeholder="Enter Group Name"/>
+                            <!--Group name is different from group ID which must be generated automatically!!!!-->
+                        </p><br>
+                        <p>
+                            <label>Number of Users: </label>
+                            <select name = 'numUsers' placeholder="#" size = '1'required/>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                            </select>
+                        </p>
+                        <small>*minimum 3 users in a group, maximum 10 users in a group.</small><br><br>
+                        <p>
+                            <label>Total Duration:</label><br>
+                            <input type = 'date' name = 'startDate'/>
+                            to
+                            <input type = 'date' name = 'endDate'/>
+                            <!--calculate the difference somehow-->
+                            <!-- why not skip days altogether and do months only?-->
+                        </p><br>
+                        <p>
+                            <label>Total Pool Amount: </label>
+                            <input type = 'text' name = 'goalFund' placeholder = 'Final Pool Amount'/>
+                        </p><br>
+                        <p>
+                            <label>Number of Cycles:</label><br>
+                            <select name = 'numCycles' placeholder="#" size = '1'required/>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                            </select>
+                        </p><br>
+                        <p>
+                            <label>Contribution Amount (per cycle):? </label>
+                            <!-- this should be calculated by total pool amount / cycles-->
+                        </p><br>
+                        <p>
+                            <label>Invite Users: </label>
+                            <input type = 'textarea' name = 'invitedUsers' placeholder = 'How will we invite more than one?'/>
+                        </p>
+                    </fieldset>
+                    <br/>
+                    <input type = 'submit' value = 'Create Group' />
+                </form><br>
+
+                <!--Notes:-->
+                <p>Things to do: form submission should automatically create a group id, edit required!! make visible in form too, calculate duration of group or number of months... calc contribution amount per cycle...</p>
+
+            </div>
+
+            <footer>
+                <ul>
+                    <li><a href = 'index.html'>Home</a></li>
+                    <li><a href = 'about.html'>About</a></li>
+                    <li><a href = 'contact.html'>Contact</a></li>
+                    <li><a href = 'login.html'>Login</a></li>
+                    <li><a href = 'register_user.html'>Register</a></li>
+                </ul>
+                <br/>
+                <small>Copyright © 2023 Mahber. All Rights Reserved.</small>
+            </footer>
+        </div>
+    </body>
+
+</html>
