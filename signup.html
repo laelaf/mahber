@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Mahber Home</title>
+    <title>Mahber Sign Up</title>
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -20,20 +20,32 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="login.html">Login</a></li>
                 <li><a href="register_user.html">Register</a></li>
-                 <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
             </ul>
         </nav>
         <div id="content-wrap">
-    
-            <h2>Login</h2>
-            <form action="login_process.php" method="post">
+          
+            <h2>Sign Up</h2>
+            <form action="signup_process.php" method="post">
+                <label for="full_name">Full Name:</label>
+                <input type="text" id="full_name" name="full_name" required><br><br>
+
+                 <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required><br><br>
+
                 <label for="email">Email Address:</label>
                 <input type="email" id="email" name="email" required><br><br>
+
+                <label for="confirm_email">Confirm Email:</label>
+                <input type="email" id="confirm_email" name="confirm_email" required><br><br>
 
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required><br><br>
 
-                <input type="submit" value="Login">
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+
+                <input type="submit" value="Sign Up">
             </form>
         </div>
         <footer>
