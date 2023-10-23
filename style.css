@@ -82,3 +82,74 @@ footer li a:hover{
 	color: #FF8C69;
 	transition: all 0.4s ease 0s;
 }
+<<<<<<< Updated upstream
+=======
+
+/* mouse over link */
+footer a:hover {
+  color: orange;
+}
+
+/* selected link */
+footer a:active {
+  color: blue;
+}
+
+ul {
+	list-style-type: none;
+}
+
+body {
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 20px;
+    width: 400px;
+}
+
+.main-button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 20px 40px; /* Increase padding for larger button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 24px; /* Bigger font size for "Dashboard" */
+    margin: 5px;
+    display: block;
+    width: 100%;
+}
+
+.bottom-box {
+    margin-top: 20px;
+}
+
+.bottom-button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px;
+    display: block;
+    width: 100%;
+    font-size: 16px;
+}
+
+.main-button:hover, .bottom-button:hover {
+    background-color: #0056b3;
+}
+>>>>>>> Stashed changes
