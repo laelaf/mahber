@@ -73,7 +73,7 @@ footer li{
 footer li a{
 	font-size: 12px;
 	text-transform: uppercase;
-	padding: 0px 30px;
+	padding: 0px 20px;
 	color: white;
 	text-decoration: none;
 }
@@ -82,6 +82,37 @@ footer li a:hover{
 	color: #FF8C69;
 	transition: all 0.4s ease 0s;
 }
+
+/* Content styling */
+.content {
+    padding: 40px 20px;  /* Adding some space around the content */
+}
+
+/* Flexbox layout for the about section */
+.about-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+	margin-top: 20px;
+}
+
+.about-image, .about-text {
+    flex: 1;  /* Each occupies half the width */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain; /* This ensures that the image fits within its box without being cropped */
+}
+.about-text {
+	margin-top: -40px; 
+}
+
 
 
 
