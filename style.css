@@ -113,6 +113,14 @@ footer li a:hover{
 	margin-top: -40px; 
 }
 
+.team-member img {
+    width: 150px; /* You can adjust this value as needed */
+    height: auto; /* This ensures that the image's aspect ratio is maintained */
+    display: block; /* To center the image */
+    margin: 0 auto; /* To center the image */
+}
+
+
 
 
 
