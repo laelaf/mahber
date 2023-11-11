@@ -29,12 +29,18 @@ if (empty($_POST['city'])) {
 	die('City is required');
 }
 if (empty($_POST['state'])) {
-	die('state is required');
+	die('State is required');
+}
+if (empty($_POST['zip'])) {
+	die('Zip is required');
 }
 
 
-/*Password Validation
+/*Username Password Validation
 	still need to require upper And lowercase, and 1 special character*/
+if (empty($_POST['username'])) {
+	die('username is required');
+}
 if (strlen($_POST['password']) < 8) {
 	die('Password must be at least 8 characters');
 }
@@ -55,13 +61,32 @@ $password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $mysqli = require __DIR__ . "/database.php";
 
 
-/* STUCK HERE 
-$sql = 'INSERT INTO User_R (FirstName, LastName, Street, City, Zip
+ STUCK HERE 
+$sql = 'INSERT INTO User_R (FirstName, LastName, Street, City, State, Zip, Phone, Email, Username, Password) 
+	VALUES (?,?,?,?,?,?,?,?,?,?)';
 
-$stmt = $mysqli->stmt_init
+$stmt = $mysqli->stmt_init();
 
-*/
+If ( ! $stmt->prepare($sql)) {
+	die("SQL error: " . $mysqli->error);
+}
 
+$stmt->bind_param("sss",
+				$_POST['first_name'],
+				$_POST['last_name'],
+				$_POST['street'],
+				$_POST['city'],
+				$_POST['state'],
+				$_POST['zip'],
+				$_POST['phone'],
+				$_POST['email'],
+				$_POST['username'],
+				$password_hash);
+
+$stmt->execute();
+
+
+echo "Signup successful"
 print_r($_POST);
 var_dump($password_hash);
 
