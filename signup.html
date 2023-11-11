@@ -51,7 +51,7 @@
         </nav>
 
   <!-- CONTENT -->
-            <div class = 'container'>
+            <div class = 'container mt-5 mb-5'>
             	<form action='process-signup.php' method='post'> 
 		    		<fieldset>
 		    			<legend>Your Personal Information</legend>
@@ -100,6 +100,13 @@
 						</p>
 					</fieldset>
 					<fieldset>
+						<legend>Set Username</legend>
+						<p>
+							<label>Username:</label>
+                			<input type="text" name="username" required>
+                		</p>
+					</fieldset>
+					<fieldset>
 						<legend>Set Password</legend>
 						<p>
 							<label>Password:</label>
@@ -110,7 +117,7 @@
                 			<input type="password" name="confirm_password" required>
                 		</p>
 					</fieldset>
-				<p>Do I need to add a username field? Also why are the buttons getting pushed off the page/ style buttons and form with bootstrap</p>
+				
 					<input type = 'submit'/>
 					<input type = 'reset' value = 'clear'/>
 					
@@ -118,7 +125,7 @@
             </div>
 
  <!-- FOOTER -->
-		<footer class = 'footer py-3 mt-auto fixed-bottom bg-light'>
+		<footer class = 'd-flex justify-content mb-0 py-5 border-top bg-light'>
             <div class = 'container-fluid'>
                 <span class = 'text-muted'>
                     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
