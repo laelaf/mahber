@@ -51,76 +51,96 @@
         </nav>
 
   <!-- CONTENT -->
-            <div class = 'container mt-5 mb-5'>
-            	<form action='process-signup.php' method='post'> 
-		    		<fieldset>
-		    			<legend>Your Personal Information</legend>
-		    			<p>
-							<label>First Name</label>
-							<input type = 'text' name = 'first_name' placeholder="Enter First Name" required/>
-						</p>
-						<p>
-							<label>Last Name</label>
-							<input type = 'text' name = 'last_name' placeholder="Enter Last Name" required/>
-						</p>
-						<p>
-							<label>Date of Birth:</label>
-                			<input type="date" name="dob" required>
-						</p>
-						<p>
-							<label>Phone Number</label>
-							<input type = 'tel' name = 'phone' placeholder="(xxx) xxx-xxxx" pattern='[0-9]{3}[0-9]{3}[0-9]{4}' required/>
-						</p>
-						<p>
-							<label>Email</label>
-							<input type = 'email' name = 'email' placeholder="Enter Email" required/>
-						</p>
-						<p>
-							<label>Confirm Email</label>
-							<input type = 'email' name = 'confirm_email' placeholder="Enter Email" required/>
-						</p>
-		    		</fieldset>
-		    		<fieldset>
-						<legend>Address</legend>
-						<p>
-							<label>Street</label>
-							<input type = 'text' name = 'street' placeholder="Enter Street Name"/>
-						</p>
-						<p>
-							<label>City</label>
-							<input type = 'text' name = 'city' placeholder="Enter City"/>
-							<label>State</label>
-							<select name = 'state'> 
-								<option>Select</option><option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District Of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option>
-							</select>
-						</p>
-						<p>
-							<label>Zip Code</label>
-							<input type = 'text' name = 'zip_code' placeholder="Enter Zip Code"/>
-						</p>
-					</fieldset>
-					<fieldset>
-						<legend>Set Username</legend>
-						<p>
-							<label>Username:</label>
-                			<input type="text" name="username" required>
-                		</p>
-					</fieldset>
-					<fieldset>
-						<legend>Set Password</legend>
-						<p>
-							<label>Password:</label>
-                			<input type="password" name="password" required>
-                		</p>
-                		<p>
-                			<label>Confirm Password:</label>
-                			<input type="password" name="confirm_password" required>
-                		</p>
-					</fieldset>
-				
-					<input type = 'submit'/>
-					<input type = 'reset' value = 'clear'/>
-					
+            <div class = 'container border shadow bg-light mt-5 mb-5 p-5'>
+            	<h2 class='text-center'>Sign Up</h2>
+            	<form id='signupForm' class = 'contact-form-signin' action='#' method='post'> 
+		    		<div>
+			    		<fieldset>
+			    			<div class="row mb-3">
+            					<div class="col">
+									<label>First Name</label>
+									<input class = 'form-control' type = 'text' name = 'first_name' id='first_name' placeholder="Enter First Name" required/>
+								</div>
+								<div class = 'col'>
+									<label>Last Name</label>
+									<input class = 'form-control' type = 'text' name = 'last_name' id = 'last_name' placeholder="Enter Last Name" required/>
+								</div>
+							</div>
+							<div class="row mb-3">
+            					<div class="col">
+									<label>Date of Birth</label><br>
+		                			<input class = 'form-control' id='dob' type="date" name="dob" required>
+								</div>
+								<div class = 'col'>
+									<label>Phone Number</label>
+									<input class = 'form-control' type = 'tel' id='phone' name = 'phone' placeholder="(xxx) xxx-xxxx" pattern='[0-9]{3}[0-9]{3}[0-9]{4}' required/>
+								</div>
+							</div>
+							<div class='row mb-3'>
+								<div class = 'col'>
+									<label>Email</label><br>
+									<input type = 'email' class = 'form-control' name = 'email' id='email' placeholder="Enter Email" required/>
+								</div>
+								<div class = 'col'>
+									<label>Confirm Email</label>
+									<input type = 'email' class = 'form-control' name = 'confirm_email' id='confirm_email' placeholder="Enter Email" required/>
+								</div>
+							</div>
+			    		</fieldset>
+			    	</div><br>
+					<div>
+			    		<fieldset>
+							<legend>Address</legend>
+							<div class='row mb-3'>
+								<div class = 'col'>
+									<label>Street</label><br>
+									<input type = 'text' class = 'form-control' name = 'street' id = 'street' placeholder="Enter Street Name" required/>
+								</div>
+								<div class = 'col'>
+									<label>City</label><br>
+									<input type = 'text' class = 'form-control' name = 'city' id='city' placeholder="Enter City" required/>
+								</div>
+							</div>
+							<div class='row mb-3'>
+								<div class = 'col'>
+									<label>State</label><br>
+									<select name = 'state' class = 'form-control' id='state' required> 
+										<option>Select</option><option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District Of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option>
+									</select>
+								</div>
+							
+								<div class = 'col'>
+									<label>Zip Code</label><br>
+									<input type = 'text' class = 'form-control' id='zip_code' name = 'zip_code' placeholder="Enter Zip Code" required/>
+								</div>
+							</div>
+						</fieldset><br>
+					</div>
+					<div>
+				    	<fieldset>
+							<legend >Create Username & Password</legend>
+							<div class="row mb-3">
+								<div class="col">
+									<label>Username:</label><br>
+			                		<input type="text" class = 'form-control' name="username" id='username' required/>
+			                	</div>
+			                </div>
+							<div class="row mb-3">
+	            				<div class="col">
+									<label>Password:</label>
+			                		<input type="password" id='password' class = 'form-control' name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters including a special character" required/>
+			                	</div>
+			                	<div class="col">
+			                		<label>Confirm Password:</label>
+			                		<input type="password" id='confirm_password' class = 'form-control' name="confirm_password" required/>
+			                	</div>
+			                </div>
+						</fieldset>
+					</div><br>
+					<div class = 'text-center'>
+						<input type = 'submit' class="btn btn-primary mx-auto" value = 'Submit'>
+						<input type = 'reset' value = 'Clear' class="btn btn-primary mx-auto">
+					</div>
 		    	</form>
             </div>
 
@@ -142,6 +162,30 @@
 
 <!-- bootstrap JS link -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+        <script>
+		// JavaScript for form validation
+		document.getElementById('signupForm').addEventListener('submit', function(event) {
+			var email = document.getElementById('email').value;
+			var confirm_email = document.getElementById('confirm_email').value;
+			var password = document.getElementById('password').value;
+			var confirm_password = document.getElementById('confirm_password').value;
+		
+			// Check if emails match
+			if(email !== confirm_email) {
+				alert('Emails do not match.');
+				event.preventDefault(); // Prevent form submission
+				return false;
+			}
+		
+			// Check if passwords match
+			if(password !== confirm_password) {
+				alert('Passwords do not match.');
+				event.preventDefault(); // Prevent form submission
+				return false;
+			}
+		});
+		</script>
 
     </body>
 </html>
