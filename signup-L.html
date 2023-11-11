@@ -1,0 +1,190 @@
+<!doctype html>
+<!-- Authors:
+    Saly Camara
+    Eisha Basit
+    Prudhvi Raju
+    Laelaf Mengistie-->
+<html lang='en'>
+	 <head>                     
+        <meta charset="utf-8">
+        <title>BOOTSTRAP Mahber Sign Up</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- bootstrap CSS link -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link rel = 'stylesheet' href = 'style2.css'/>
+
+    </head>
+
+    <body class="d-flex flex-column h-100" style = 'background-color: #d1edf2;'>
+
+   <!-- NAV -->
+    	<nav class="navbar navbar-expand-lg bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">                <img class="logo" width="150" height="55" src = 'images/mahber_logo2.png'></img></a>
+                <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item navlink">
+                                <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item navlink">
+                                <a class="nav-link" href="about.html">About</a>
+                            </li>
+                            <li class="nav-item navlink">
+                                <a class="nav-link" href="contact.html">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <button type = 'button' class='btn btn-outline-info p-1 m-1'>
+                                    <a class="nav-link active" href="login.html">Login</a>
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button type = 'button' class='btn btn-outline-info py-1 m-1'>
+                                    <a class="nav-link active" href="signup.html">Sign Up</a>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+        </nav>
+
+		<div class="container mt-5">
+			<h2>Signup</h2>
+			<form id="signupForm">
+				<!-- Personal Information Section -->
+				<fieldset>
+					<legend>Personal Information:</legend>
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="firstName" class="form-label">First Name:</label>
+							<input type="text" class="form-control" id="firstName" required>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="lastName" class="form-label">Last Name:</label>
+							<input type="text" class="form-control" id="lastName" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="dob" class="form-label">Date of Birth:</label>
+							<input type="date" class="form-control" id="dob" required>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="phone" class="form-label">Phone Number:</label>
+							<input type="tel" class="form-control" id="phone" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="email" class="form-label">Email:</label>
+							<input type="email" class="form-control" id="email" required>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="confirmEmail" class="form-label">Confirm Email:</label>
+							<input type="email" class="form-control" id="confirmEmail" required>
+						</div>
+					</div>
+				</fieldset>
+				
+				<!-- Address Section -->
+				<fieldset>
+					<legend>Address:</legend>
+					<div class="row">
+						<div class="col-md-8 mb-3">
+							<label for="street" class="form-label">Street:</label>
+							<input type="text" class="form-control" id="street" required>
+						</div>
+						<div class="col-md-4 mb-3">
+							<label for="suffix" class="form-label">Suffix:</label>
+							<select class="form-select" id="suffix" required>
+								<option value="St">Street</option>
+								<option value="Apt">Apartment</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="city" class="form-label">City:</label>
+							<input type="text" class="form-control" id="city" required>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="zip" class="form-label">Zip Code:</label>
+							<input type="text" class="form-control" id="zip" required>
+						</div>
+					</div>
+				</fieldset>
+				
+				<!-- Password Section -->
+				<fieldset>
+					<legend>Choose a Password:</legend>
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="password" class="form-label">Password:</label>
+							<input type="password" class="form-control" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters including a special character" required>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="confirmPassword" class="form-label">Confirm Password:</label>
+							<input type="password" class="form-control" id="confirmPassword" required>
+						</div>
+					</div>
+				</fieldset>
+		
+				<div class="row">
+					<div class="col text-center">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+				
+			</form>
+		</div>
+		
+		<!-- Bootstrap JS link -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+		
+		<script>
+		// JavaScript for form validation
+		document.getElementById('signupForm').addEventListener('submit', function(event) {
+			var email = document.getElementById('email').value;
+			var confirmEmail = document.getElementById('confirmEmail').value;
+			var password = document.getElementById('password').value;
+			var confirmPassword = document.getElementById('confirmPassword').value;
+		
+			// Check if emails match
+			if(email !== confirmEmail) {
+				alert('Emails do not match.');
+				event.preventDefault(); // Prevent form submission
+				return false;
+			}
+		
+			// Check if passwords match
+			if(password !== confirmPassword) {
+				alert('Passwords do not match.');
+				event.preventDefault(); // Prevent form submission
+				return false;
+			}
+		});
+		</script>
+
+ <!-- FOOTER -->
+		<footer class = 'footer py-3 mt-auto bg-light'>
+            <div class = 'container-fluid'>
+                <span class = 'text-muted'>
+                    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                        <li class="nav-item"><a href = 'index.html' class="nav-link px-2 text-muted">Home</a></li>
+                        <li class="nav-item"><a href = 'about.html' class="nav-link px-2 text-muted">About</a></li>
+                        <li class="nav-item"><a href = 'contact.html' class="nav-link px-2 text-muted">Contact</a></li>
+                        <li class="nav-item"><a href = 'login.html' class="nav-link px-2 text-muted">Login</a></li>
+                        <li class="nav-item"><a href = 'signup.html' class="nav-link px-2 text-muted">Sign Up</a></li>
+                    </ul>
+                    <p class='text-center text-muted'>&copy; 2023 Mahber</p>
+                </span>
+            </div>
+        </footer>
+
+<!-- bootstrap JS link -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    </body>
+</html>
