@@ -4,6 +4,9 @@ body {
   height: 100%;
 }
 
+.form-control{
+  border:1px solid #aaaeb3;
+}
 .form-signin {
   width: 100%;
   max-width: 330px;
