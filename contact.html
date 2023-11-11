@@ -50,12 +50,42 @@
         </nav>
 
   <!-- CONTENT -->
-        <div class = 'container'>
-            <h1>Contact Page</h1> 
+  
+  <div class="container mt-5">
+    <h2>Contact Us</h2>
+    <form>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+            </div>
+            <div class="col">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+            </div>
         </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+            </div>
+            <div class="col-md-6">
+                <label for="phoneNumber" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phoneNumber" placeholder="Your Phone Number(Optional)">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="3" placeholder="Your Message" required></textarea>
+        </div>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary mx-auto">Submit</button>
+        </div>
+    </form>
+</div>
 
  <!-- FOOTER -->
-        <footer class = 'footer py-3 mt-auto fixed-bottom bg-light'>
+        <footer class = 'footer py-3 fixed-bottom mt-auto bg-light'>
             <div class = 'container-fluid'>
                 <span class = 'text-muted'>
                     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
