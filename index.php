@@ -55,15 +55,16 @@
 
 <!-- this is where page content goes, inside MAIN -->
         <main class="flex-shrink-0">
+
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <h2 class='text-center'> You are logged in.</h2>
+                <?php else: ?>
+                    <h2 class = 'text-center'><a href = 'login.php'>Log in</a> or <a href = 'signup.html'>Sign up</a></h2>
+                <?php endif; ?>
+
           <div class="container border shadow p-3 bg-light rounded mt-5 mb-5">
 
             <div class="px-4 py-5 my-5 text-center">
-
-                <?php if (isset($SESSION['UserID'])): ?>
-                    <p> You are logged in.</p>
-                <?php else: ?>
-                    <p><a href = 'login.php'>Log in</a> or <a href = 'signup.html'>Sign up</a></p>
-                <?php endif; ?>
 
                 <img class="logo" width="200" height="75" src = 'images/mahber_logo2.png'/>
                 <!--<h1 class="display-5 fw-bold text-body-emphasis">Mahber ROSCA</h1>-->

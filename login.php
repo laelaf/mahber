@@ -2,7 +2,7 @@
 
 $is_invalid = false;
 
-if ($SERVER['REQUEST_METHOD'] === 'POST'){
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     $host = 'eishabasit.com';
         $dbname = 'mahberRosca';
@@ -28,31 +28,36 @@ if ($SERVER['REQUEST_METHOD'] === 'POST'){
             echo "Error: " . mysqli_error($mysqli);
         }
     
-    $sql = sprintf("SELECT * FROM user_R 
-                    WHERE email = '%s'",
-                    $mysqli->real_escape_string($_POST['email']));
+   //mysqli_select_db ( $mysqli , $dbname);
+
+    $sql = sprintf("SELECT * FROM User_R 
+                    WHERE Username = '%s'", $_POST["username"]);
 
     $result = $mysqli->query($sql);
 
     $user = $result->fetch_assoc();
 
+    //var_dump($user);
+    //exit;
+
     if ($user) {
 
-        if (password_verify($_POST['password'], $user['password'])) {
+        if ($_POST['password'] == $user['Password']) {
+            
             session_start();
             session_regenerate_id();
-            $_SESSION['UserID'] = $user['UserID'];
+            $_SESSION['user_id'] = $user['UserID'];
 
             header("Location: index.php");
             exit;
+            
         }
     }
 
 
-
 $is_invalid = true;
 
-        mysqli_close($mysqli);
+        //mysqli_close($mysqli);
 }
 
 ?>
