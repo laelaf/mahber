@@ -27,6 +27,7 @@ if ($SERVER['REQUEST_METHOD'] === 'POST'){
         else{
             echo "Error: " . mysqli_error($mysqli);
         }
+    
     $sql = sprintf("SELECT * FROM user_R 
                     WHERE email = '%s'",
                     $mysqli->real_escape_string($_POST['email']));
@@ -76,11 +77,6 @@ $is_invalid = true;
 
     <body class="d-flex flex-column h-100" style = 'background-color: #d1edf2;'>
 
-        <?php if ($is_invalid): ?>
-            <em>Invalid Login</em>
-        <?php endif; ?>
-
-
    <!-- NAV -->
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container">
@@ -101,7 +97,7 @@ $is_invalid = true;
                             </li>
                             <li class="nav-item">
                                 <button type = 'button' class='btn btn-outline-info p-1 m-1'>
-                                    <a class="nav-link active" href="login.html">Login</a>
+                                    <a class="nav-link active" href="login.php">Login</a>
                                 </button>
                             </li>
                             <li class="nav-item">
@@ -116,7 +112,10 @@ $is_invalid = true;
 
   <!-- CONTENT -->
             <div class = 'container border shadow p-3 bg-light rounded mt-5 mb-5'>
-               <form class="form-signin text-center" method = 'POST'>
+            <?php if ($is_invalid): ?>
+                <em>Invalid Login</em>
+            <?php endif; ?>
+               <form class="form-signin text-center" method='POST'>
                   <img class="logo" width="200" height="200" src = 'images/mahber_logo.png'></img>
                   <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
                   <fieldset>
@@ -137,7 +136,7 @@ $is_invalid = true;
                         <li class="nav-item"><a href = 'index.html' class="nav-link px-2 text-muted">Home</a></li>
                         <li class="nav-item"><a href = 'about.html' class="nav-link px-2 text-muted">About</a></li>
                         <li class="nav-item"><a href = 'contact.html' class="nav-link px-2 text-muted">Contact</a></li>
-                        <li class="nav-item"><a href = 'login.html' class="nav-link px-2 text-muted">Login</a></li>
+                        <li class="nav-item"><a href = 'login.php' class="nav-link px-2 text-muted">Login</a></li>
                         <li class="nav-item"><a href = 'signup.html' class="nav-link px-2 text-muted">Sign Up</a></li>
                     </ul>
                     <p class='text-center text-muted'>&copy; 2023 Mahber</p>
