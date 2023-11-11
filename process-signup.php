@@ -31,9 +31,9 @@ if (empty($_POST['city'])) {
 if (empty($_POST['state'])) {
 	die('State is required');
 }
-if (empty($_POST['zip'])) {
+/*if (empty($_POST['zip'])) {
 	die('Zip is required');
-}
+}*/
 
 
 /*Username Password Validation
@@ -54,16 +54,36 @@ if($_POST['password'] !== $_POST['confirm_password']) {
 	die("Passwords must match");
 }
 
-/* password hash */
-$password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+/* password hash not used yet*/
+//$password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-/* using database */
+
+/* create user id */
+
+function generateUserId() {
+     //Choose a random letter for the first character
+    $firstChar = "U";
+    
+     //Generate 5 random numbers for the remaining characters
+    $numbersPart = rand(10000, 99999);
+    
+    // Combine the letter and numbers to form the 6-character user ID
+    $userId = $firstChar . $numbersPart;
+    
+    return $userId;
+}
+
+$userID = generateUserId();
+echo $userID;
+/*end create user id*/
+
+print_r($_POST);
+//var_dump($password_hash);
+
+/* using database*/ 
 $mysqli = require __DIR__ . "/database.php";
 
-
- STUCK HERE 
-$sql = 'INSERT INTO User_R (FirstName, LastName, Street, City, State, Zip, Phone, Email, Username, Password) 
-	VALUES (?,?,?,?,?,?,?,?,?,?)';
+$sql = "INSERT INTO User_R (UserID, FirstName, LastName, Street, City, State, Zip, Phone, Email, Username, Password) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
 $stmt = $mysqli->stmt_init();
 
@@ -71,7 +91,8 @@ If ( ! $stmt->prepare($sql)) {
 	die("SQL error: " . $mysqli->error);
 }
 
-$stmt->bind_param("sss",
+$stmt->bind_param("sssssssssss",
+				$userID,
 				$_POST['first_name'],
 				$_POST['last_name'],
 				$_POST['street'],
@@ -81,13 +102,16 @@ $stmt->bind_param("sss",
 				$_POST['phone'],
 				$_POST['email'],
 				$_POST['username'],
-				$password_hash);
+				$_POST['password']);
 
-$stmt->execute();
+if ($stmt->execute()) {
+    echo "Signup successful";
+} else {
+    die($mysqli->error . " " . $mysqli->errno);
+}
 
 
-echo "Signup successful"
-print_r($_POST);
-var_dump($password_hash);
+$stmt->close();
+$mysqli->close();
 
 ?>
