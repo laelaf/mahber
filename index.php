@@ -57,9 +57,10 @@
         <main class="flex-shrink-0">
 
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <h2 class='text-center'> You are logged in.</h2>
+                    <h2 class='text-center'>You are logged in.</h2>
+                    <h2 class = 'text-center'><a href ='logout.php'>Log out</a></h2>
                 <?php else: ?>
-                    <h2 class = 'text-center'><a href = 'login.php'>Log in</a> or <a href = 'signup.html'>Sign up</a></h2>
+                    <h2 class = 'text-center'>You are logged out, Goodbye!</h2>
                 <?php endif; ?>
 
           <div class="container border shadow p-3 bg-light rounded mt-5 mb-5">
