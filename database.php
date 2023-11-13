@@ -1,5 +1,9 @@
 <?php 
-
+/* Authors:
+    Saly Camara
+    Eisha Basit
+    Prudhvi Raju
+    Laelaf Mengistie*/
 
 
 $host = 'eishabasit.com';
