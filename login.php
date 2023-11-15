@@ -1,3 +1,41 @@
+<?php
+
+$is_invalid = false;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+require 'database.php';
+
+    $sql = sprintf("SELECT * FROM User_R 
+                    WHERE Username = '%s'", $_POST["username"]);
+
+    $result = $mysqli->query($sql);
+
+    $user = $result->fetch_assoc();
+
+    //var_dump($user);
+    //exit;
+
+    if ($user) {
+
+        if ($_POST['password'] == $user['Password']) {
+            
+            session_start();
+            session_regenerate_id();
+            $_SESSION['user_id'] = $user['UserID'];
+
+            header("Location: index.php");
+            exit;
+            
+        }
+    }
+
+$is_invalid = true;
+
+}
+
+?>
+
 <!doctype html>
 <!-- Authors:
     Saly Camara
@@ -7,11 +45,13 @@
 <html lang='en'>
      <head>                     
         <meta charset="utf-8">
-        <title>BOOTSTRAP Mahber Contact</title>
+        <title>BOOTSTRAP Mahber Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- bootstrap CSS link -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <link rel = 'stylesheet' href = 'style2.css'/>
+        <link rel = 'stylesheet' href = 'form.css'/>
+        
     </head>
 
     <body class="d-flex flex-column h-100" style = 'background-color: #d1edf2;'>
@@ -50,72 +90,24 @@
         </nav>
 
   <!-- CONTENT -->
-        <div class = 'container'>
-             <form> 
-                    <fieldset>
-                        <legend>Create New Group</legend><br>
-                        <p>
-                            <label>Group Name: </label> 
-                            <input type = 'text' name = 'group name' placeholder="Enter Group Name"/>
-                            <!--Group name is different from group ID which must be generated automatically!!!!-->
-                        </p>
-                        <p>
-                            <label>Number of Users: </label>
-                            <select name = 'numUsers' placeholder="#" size = '1'required/>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                            </select>
-                            <small>*minimum 3 users in a group, maximum 10 users in a group.</small>
-                        </p>
-                        <p>
-                            <label>Total Duration:</label><br>
-                            <input type = 'date' name = 'startDate'/>
-                            to
-                            <input type = 'date' name = 'endDate'/>
-                            <!--calculate the difference somehow-->
-                            <!-- why not skip days altogether and do months only?-->
-                        </p>
-                        <p>
-                            <label>Total Pool Amount: </label>
-                            <input type = 'text' name = 'goalFund' placeholder = 'Final Pool Amount'/>
-                        </p>
-                        <p>
-                            <label>Number of Cycles:</label>
-                            <select name = 'numCycles' placeholder="#" size = '1'required/>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                            </select>
-                        </p>
-                        <p>
-                            <label>Contribution Amount (per cycle):? </label>
-                            <!-- this should be calculated by total pool amount / cycles-->
-                        </p>
-                        <p>
-                            <label>Invite Users: </label>
-                            <input type = 'textarea' name = 'invitedUsers' placeholder = 'How will we invite more than one?'/>
-                        </p>
-                    </fieldset>
-                    <br/>
-                    <input type = 'submit' value = 'Create Group' />
-                </form><br>
 
-                <!--Notes:-->
-                <p>Things to do: form submission should automatically create a group id, edit required!! make visible in form too, calculate duration of group or number of months... calc contribution amount per cycle...</p>
-        </div>
+            <div class = 'container border shadow p-3 bg-light rounded mt-5 mb-5'>
+            <?php if ($is_invalid): ?>
+                <em>Invalid Login</em>
+            <?php endif; ?>
+               <form class="form-signin text-center" method='POST'>
+
+                  <img class="logo" width="200" height="200" src = 'images/mahber_logo.png'></img>
+                  <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
+                  <fieldset>
+                      <label for="username" class="form-label sr-only visually-hidden">Username</label>
+                      <input type="username" id='username' name="username" class="form-control" placeholder="Username" required autofocus>
+                      <label for="password" class="form-label sr-only visually-hidden">Password</label>
+                      <input type="password" id='password' name="password" class="form-control" placeholder="Password" required><br>
+                      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                  </fieldset>
+                </form>
+            </div>
 
  <!-- FOOTER -->
         <footer class = 'footer py-3 mt-auto fixed-bottom bg-light'>
