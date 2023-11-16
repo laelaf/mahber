@@ -5,7 +5,7 @@ body {
 }
 
 .form-control{
-  border:1px solid #aaaeb3;
+  border: none;
 }
 .form-signin {
   width: 100%;
