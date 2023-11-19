@@ -37,18 +37,31 @@
                     <a class="nav-link" href="about.php">About</a>
                 </li>
                 <li class="nav-item navlink">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="contact.php">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <button type='button' class='btn btn-outline-info p-1 m-1'>
-                        <a class="nav-link active" href="login.php">Login</a>
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button type='button' class='btn btn-outline-info py-1 m-1'>
-                        <a class="nav-link active" href="signup.html">Sign Up</a>
-                    </button>
-                </li>
+                                <?php if (isset($_SESSION['UserID'])): ?>
+                                <button type = 'button' class='btn btn-outline-info px-3 py-1 m-1'>
+                                    
+                                    <img src = 'images/Placeholder.png' style="width: 50px;height: 50px;"/>
+                                    <?php 
+                                        echo $_SESSION['Username'];
+                                    ?>                 
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button type = 'button' class='btn btn-outline-info px-3 py-3 m-1'>
+                                    <a href ='logout.php'>Log out</a>                          
+                                </button>
+                                <?php else: ?>
+                                    <button type='button' class='btn btn-outline-info p-1 m-1'>
+                                     <a class="nav-link active" href="login.php">Login</a>
+                                    </button>
+                                    <button type='button' class='btn btn-outline-info py-1 m-1'>
+                                    <a class="nav-link active" href="signup.html">Sign Up</a>
+                                </button>
+                                <?php endif; ?>
+                            </li>
             </ul>
         </div>
     </div>
@@ -57,19 +70,7 @@
 <!-- CONTENT -->
 <!-- About Mahber Section -->
 <main class="flex-shrink-0">
-                <?php if (isset($_SESSION['UserID'])): ?>
-                    <?php 
-                        echo '<strong>UserID: </strong>' . $_SESSION['UserID'] . '<br>';
-                        echo '<strong>Username: </strong>' . $_SESSION['Username'] . '<br>';
-
-                        echo '<h3>Session continues!</h3>';
-                        echo '<strong>Session ID is: </strong>' . session_id() . '<br>';
-                    ?>
-                    <h2 class='text-center'>You are logged in.</h2>
-                    <h2 class = 'text-center'><a href ='logout.php'>Log out</a></h2>
-                <?php else: ?>
-                    <h2 class = 'text-center'>You are logged out, Goodbye!</h2>
-                    <?php endif; ?>
+                
     <div class="container mt-5 mb-5">
         <h1 class="text-center">About Mahber</h1>
         <div class="container border shadow p-3 bg-light rounded mt-5 mb-5">
@@ -149,7 +150,7 @@
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href='index.php' class="nav-link px-2 text-muted">Home</a></li>
                 <li class="nav-item"><a href='about.php' class="nav-link px-2 text-muted">About</a></li>
-                <li class="nav-item"><a href='contact.html' class="nav-link px-2 text-muted">Contact</a></li>
+                <li class="nav-item"><a href='contact.php' class="nav-link px-2 text-muted">Contact</a></li>
                 <li class="nav-item"><a href='login.php' class="nav-link px-2 text-muted">Login</a></li>
                 <li class="nav-item"><a href='signup.html' class="nav-link px-2 text-muted">Sign Up</a></li>
             </ul>

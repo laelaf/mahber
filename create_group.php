@@ -38,17 +38,30 @@
                                 <a class="nav-link" href="about.php">About</a>
                             </li>
                             <li class="nav-item navlink">
-                                <a class="nav-link" href="contact.html">Contact</a>
+                                <a class="nav-link" href="contact.php">Contact</a>
                             </li>
                             <li class="nav-item">
-                                <button type = 'button' class='btn btn-outline-info p-1 m-1'>
-                                    <a class="nav-link active" href="login.php">Login</a>
+                                <?php if (isset($_SESSION['UserID'])): ?>
+                                <button type = 'button' class='btn btn-outline-info px-3 py-1 m-1'>
+                                    
+                                    <img src = 'images/Placeholder.png' style="width: 50px;height: 50px;"/>
+                                    <?php 
+                                        echo $_SESSION['Username'];
+                                    ?>                 
                                 </button>
                             </li>
                             <li class="nav-item">
-                                <button type = 'button' class='btn btn-outline-info py-1 m-1'>
+                                <button type = 'button' class='btn btn-outline-info px-3 py-3 m-1'>
+                                    <a href ='logout.php'>Log out</a>                          
+                                </button>
+                                <?php else: ?>
+                                    <button type='button' class='btn btn-outline-info p-1 m-1'>
+                                     <a class="nav-link active" href="login.php">Login</a>
+                                    </button>
+                                    <button type='button' class='btn btn-outline-info py-1 m-1'>
                                     <a class="nav-link active" href="signup.html">Sign Up</a>
                                 </button>
+                                <?php endif; ?>
                             </li>
                         </ul>
                     </div>
@@ -57,31 +70,19 @@
 
   <!-- CONTENT -->
   <main class="flex-shrink-0">
-        <?php if (isset($_SESSION['UserID'])): ?>
-                    <?php 
-                        echo '<strong>UserID: </strong>' . $_SESSION['UserID'] . '<br>';
-                        echo '<strong>Username: </strong>' . $_SESSION['Username'] . '<br>';
-
-                        echo '<h3>Session continues!</h3>';
-                        echo '<strong>Session ID is: </strong>' . session_id() . '<br>';
-                    ?>
-                    <h2 class='text-center'>You are logged in.</h2>
-                    <h2 class = 'text-center'><a href ='logout.php'>Log out</a></h2>
-                <?php else: ?>
-                    <h2 class = 'text-center'>You are logged out, Goodbye!</h2>
-                <?php endif; ?>
+        
         <div class = 'container border shadow bg-light mt-5 mb-5 p-5'>
             <h2 class='text-center'>Create New Group</h2>
              <form action='#' method='post' class='create-group-form'> 
                     
                         <p>
                             <label>Group Name: </label> 
-                            <input type = 'text' name = 'group name' placeholder="Enter Group Name" class='form-control'/>
+                            <input type = 'text' name = 'groupName' id='groupName' placeholder="Enter Group Name" class='form-control'/>
                             <!--Group name is different from group ID which must be generated automatically!!!!-->
                         </p>
                         <p>
                             <label>Number of Users: </label>
-                            <select name = 'numUsers' placeholder="#" size = '1'required class='form-control'/>
+                            <select name = 'numUsers' id=numUsers placeholder="#" size = '1'required class='form-control'/>
                                 <option>3</option>
                                 <option>4</option>
                                 <option>5</option>
@@ -95,17 +96,28 @@
                         </p>
                         <p>
                             <label>Number of Cycles:</label>
-                            <input type='text' name = 'numCycles' placeholder="#" required readonly class='form-control'/>
-                            <small>*should be calculated select, numCycles must be a multiple of numUsers</small>
+                                                    
+                            <select type='text' name = 'numCycles' id = 'numCycles' placeholder="#" required class='form-control'/>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                            </select>
+                            <small>*numCycles must be the same as number of users</small>
+
                         </p>
                         <p>
                             <label>Contribution Amount</label>
-                            <input type = 'text' name = 'contribution_amt' placeholder = 'Contribution Amount' class='form-control'/>
+                            <input type = 'text' name = 'contribution_amt' id = 'contribution_amt' placeholder = 'Contribution Amount' class='form-control'/>
                             
                         </p>
                         <p>
                             <label>Total Pool Amount: </label>
-                            <input type = 'text' name = 'totalPool' placeholder = 'Final Pool Amount' class='form-control' readonly/>
+                            <input type = 'text' name = 'totalPool' id = 'totalPool' placeholder = 'Final Pool Amount' class='form-control' readonly/>
                             <small>*this is a calculated field, numUsers*contributionAmount (cannot type here)</small>
                         </p>
                         
@@ -126,7 +138,7 @@
                     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                         <li class="nav-item"><a href = 'index.php' class="nav-link px-2 text-muted">Home</a></li>
                         <li class="nav-item"><a href = 'about.php' class="nav-link px-2 text-muted">About</a></li>
-                        <li class="nav-item"><a href = 'contact.html' class="nav-link px-2 text-muted">Contact</a></li>
+                        <li class="nav-item"><a href = 'contact.php' class="nav-link px-2 text-muted">Contact</a></li>
                         <li class="nav-item"><a href = 'login.php' class="nav-link px-2 text-muted">Login</a></li>
                         <li class="nav-item"><a href = 'signup.html' class="nav-link px-2 text-muted">Sign Up</a></li>
                     </ul>
