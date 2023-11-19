@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 require 'database.php';
 
     $sql = sprintf("SELECT * FROM User_R 
-                    WHERE Username = '%s'", $_POST["username"]);
+                    WHERE Username = '%s'", $_POST["Username"]);
 
     $result = $mysqli->query($sql);
 
@@ -18,13 +18,14 @@ require 'database.php';
 
     if ($user) {
 
-        if ($_POST['password'] == $user['Password']) {
+        if ($_POST['Password'] == $user['Password']) {
             
             session_start();
             session_regenerate_id();
-            $_SESSION['user_id'] = $user['UserID'];
+            $_SESSION['UserID'] = $user['UserID'];
+            $_SESSION['Username'] = $_POST['Username'];
 
-            header("Location: index.php");
+            header("Location: create_group.php");
             exit;
             
         }
@@ -99,9 +100,9 @@ $is_invalid = true;
                   <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
                   <fieldset>
                       <label for="username" class="form-label sr-only visually-hidden">Username</label>
-                      <input type="username" id='username' name="username" class="form-control" placeholder="Username" required autofocus>
+                      <input type="username" id='Username' name="Username" class="form-control" placeholder="Username" required autofocus>
                       <label for="password" class="form-label sr-only visually-hidden">Password</label>
-                      <input type="password" id='password' name="password" class="form-control" placeholder="Password" required><br>
+                      <input type="password" id='Password' name="Password" class="form-control" placeholder="Password" required><br>
                       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                   </fieldset>
                 </form>
