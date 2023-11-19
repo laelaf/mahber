@@ -1,4 +1,9 @@
 <!doctype html>
+<?php
+
+    session_start();
+
+?>
 <!-- Authors:
     Saly Camara
     Eisha Basit
@@ -19,17 +24,17 @@
 <!-- NAV -->
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container">
-        <a class="navbar-brand" href="index.html"><img class="logo" width="150" height="55" src='images/mahber_logo2.png'></a>
+        <a class="navbar-brand" href="index.php"><img class="logo" width="150" height="55" src='images/mahber_logo2.png'></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item navlink">
-                    <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link" aria-current="page" href="index.php">Home</a>
                 </li>
                 <li class="nav-item navlink">
-                    <a class="nav-link" href="about.html">About</a>
+                    <a class="nav-link" href="about.php">About</a>
                 </li>
                 <li class="nav-item navlink">
                     <a class="nav-link" href="contact.html">Contact</a>
@@ -51,6 +56,19 @@
 
 <!-- CONTENT -->
 <!-- About Mahber Section -->
+<?php if (isset($_SESSION['UserID'])): ?>
+                    <?php 
+                        echo '<strong>UserID: </strong>' . $_SESSION['UserID'] . '<br>';
+                        echo '<strong>Username: </strong>' . $_SESSION['Username'] . '<br>';
+
+                        echo '<h3>Session continues!</h3>';
+                        echo '<strong>Session ID is: </strong>' . session_id() . '<br>';
+                    ?>
+                    <h2 class='text-center'>You are logged in.</h2>
+                    <h2 class = 'text-center'><a href ='logout.php'>Log out</a></h2>
+                <?php else: ?>
+                    <h2 class = 'text-center'>You are logged out, Goodbye!</h2>
+                <?php endif; ?>
 <div class="container mt-5 mb-5">
     <h1 class="text-center">About Mahber</h1>
     <div class="container border shadow p-3 bg-light rounded mt-5 mb-5">
@@ -127,8 +145,8 @@
     <div class='container-fluid'>
         <span class='text-muted'>
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href='index.html' class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href='about.html' class="nav-link px-2 text-muted">About</a></li>
+                <li class="nav-item"><a href='index.php' class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href='about.php' class="nav-link px-2 text-muted">About</a></li>
                 <li class="nav-item"><a href='contact.html' class="nav-link px-2 text-muted">Contact</a></li>
                 <li class="nav-item"><a href='login.php' class="nav-link px-2 text-muted">Login</a></li>
                 <li class="nav-item"><a href='signup.html' class="nav-link px-2 text-muted">Sign Up</a></li>

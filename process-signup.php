@@ -18,17 +18,17 @@
 <!-- #7EF9FF  or #E5F3FD for a very muted color, #D1EDF2, #29C5F6,  #77d4fc mahber color-->
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container">
-                <a class="navbar-brand" href="index.html">                <img class="logo" width="150" height="55" src = 'images/mahber_logo2.png'></img></a>
+                <a class="navbar-brand" href="index.php">                <img class="logo" width="150" height="55" src = 'images/mahber_logo2.png'></img></a>
                 <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item navlink">
-                                <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                                <a class="nav-link" aria-current="page" href="index.php">Home</a>
                             </li>
                             <li class="nav-item navlink">
-                                <a class="nav-link" href="about.html">About</a>
+                                <a class="nav-link" href="about.php">About</a>
                             </li>
                             <li class="nav-item navlink">
                                 <a class="nav-link" href="contact.html">Contact</a>
@@ -197,8 +197,8 @@
             <div class = 'container-fluid'>
                 <span class = 'text-muted'>
                     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                        <li class="nav-item"><a href = 'index.html' class="nav-link px-2 text-muted">Home</a></li>
-                        <li class="nav-item"><a href = 'about.html' class="nav-link px-2 text-muted">About</a></li>
+                        <li class="nav-item"><a href = 'index.php' class="nav-link px-2 text-muted">Home</a></li>
+                        <li class="nav-item"><a href = 'about.php' class="nav-link px-2 text-muted">About</a></li>
                         <li class="nav-item"><a href = 'contact.html' class="nav-link px-2 text-muted">Contact</a></li>
                         <li class="nav-item"><a href = 'login.php' class="nav-link px-2 text-muted">Login</a></li>
                         <li class="nav-item"><a href = 'signup.html' class="nav-link px-2 text-muted">Sign Up</a></li>
