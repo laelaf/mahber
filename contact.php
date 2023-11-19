@@ -1,4 +1,9 @@
 <!doctype html>
+<?php
+
+    session_start();
+
+?>
 <!-- Authors:
     Saly Camara
     Eisha Basit
