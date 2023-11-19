@@ -56,7 +56,8 @@
 
 <!-- CONTENT -->
 <!-- About Mahber Section -->
-<?php if (isset($_SESSION['UserID'])): ?>
+<main class="flex-shrink-0">
+                <?php if (isset($_SESSION['UserID'])): ?>
                     <?php 
                         echo '<strong>UserID: </strong>' . $_SESSION['UserID'] . '<br>';
                         echo '<strong>Username: </strong>' . $_SESSION['Username'] . '<br>';
@@ -68,30 +69,31 @@
                     <h2 class = 'text-center'><a href ='logout.php'>Log out</a></h2>
                 <?php else: ?>
                     <h2 class = 'text-center'>You are logged out, Goodbye!</h2>
-                <?php endif; ?>
-<div class="container mt-5 mb-5">
-    <h1 class="text-center">About Mahber</h1>
-    <div class="container border shadow p-3 bg-light rounded mt-5 mb-5">
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <h3>History</h3>
-                <p>Mahber was founded in 2023 with the vision to revolutionize the traditional ROSCA model through technology. Our founders, coming from diverse backgrounds, saw the potential to empower communities by providing a reliable and transparent platform for financial collaboration.</p>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h3>Vision</h3>
-                <p>Our vision is to become the world's leading digital ROSCA platform, enabling people to access community-based savings and lending services that are secure, user-friendly, and accessible to all.</p>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h3>Mission</h3>
-                <p>Our mission is to provide an innovative and trustworthy ROSCA service that fosters financial inclusion, builds trust within communities, and promotes a culture of mutual support and economic growth.</p>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h3>Values</h3>
-                <p>At Mahber, we uphold values such as integrity, community empowerment, innovation, and excellence. We believe in the strength of community finance and are committed to delivering exceptional service to our members.</p>
+                    <?php endif; ?>
+    <div class="container mt-5 mb-5">
+        <h1 class="text-center">About Mahber</h1>
+        <div class="container border shadow p-3 bg-light rounded mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <h3>History</h3>
+                    <p>Mahber was founded in 2023 with the vision to revolutionize the traditional ROSCA model through technology. Our founders, coming from diverse backgrounds, saw the potential to empower communities by providing a reliable and transparent platform for financial collaboration.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3>Vision</h3>
+                    <p>Our vision is to become the world's leading digital ROSCA platform, enabling people to access community-based savings and lending services that are secure, user-friendly, and accessible to all.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3>Mission</h3>
+                    <p>Our mission is to provide an innovative and trustworthy ROSCA service that fosters financial inclusion, builds trust within communities, and promotes a culture of mutual support and economic growth.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3>Values</h3>
+                    <p>At Mahber, we uphold values such as integrity, community empowerment, innovation, and excellence. We believe in the strength of community finance and are committed to delivering exceptional service to our members.</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</main>
 
 <!-- Our Founders Section -->
 <div class="container mt-5">

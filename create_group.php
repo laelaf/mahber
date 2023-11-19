@@ -56,6 +56,7 @@
         </nav>
 
   <!-- CONTENT -->
+  <main class="flex-shrink-0">
         <?php if (isset($_SESSION['UserID'])): ?>
                     <?php 
                         echo '<strong>UserID: </strong>' . $_SESSION['UserID'] . '<br>';
@@ -116,6 +117,7 @@
                 <!--Notes:-->
                 
         </div>
+    </main>
 
  <!-- FOOTER -->
         <footer class = 'footer py-3 mt-auto bg-light'>

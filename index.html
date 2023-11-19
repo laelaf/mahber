@@ -1,9 +1,5 @@
 <!doctype html>
-<?php
 
-    session_start();
-
-?>
 <!-- Authors:
     Saly Camara
     Eisha Basit
@@ -55,19 +51,7 @@
 
 <!-- this is where page content goes, inside MAIN -->
         <main class="flex-shrink-0">
-            <?php if (isset($_SESSION['UserID'])): ?>
-                    <?php 
-                        echo '<strong>UserID: </strong>' . $_SESSION['UserID'] . '<br>';
-                        echo '<strong>Username: </strong>' . $_SESSION['Username'] . '<br>';
-
-                        echo '<h3>Session continues!</h3>';
-                        echo '<strong>Session ID is: </strong>' . session_id() . '<br>';
-                    ?>
-                    <h2 class='text-center'>You are logged in.</h2>
-                    <h2 class = 'text-center'><a href ='logout.php'>Log out</a></h2>
-                <?php else: ?>
-                    <h2 class = 'text-center'>You are logged out, Goodbye!</h2>
-                <?php endif; ?>
+            
           <div class="container border shadow p-3 bg-light rounded mt-5 mb-5">
 
             <div class="px-4 py-5 my-5 text-center">
