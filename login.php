@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 require 'database.php';
 
     $sql = sprintf("SELECT * FROM User_R 
-                    WHERE Username = '%s'", $_POST["username"]);
+                    WHERE Username = '%s'", $_POST["Username"]);
 
     $result = $mysqli->query($sql);
 
@@ -18,13 +18,14 @@ require 'database.php';
 
     if ($user) {
 
-        if ($_POST['password'] == $user['Password']) {
+        if ($_POST['Password'] == $user['Password']) {
             
             session_start();
             session_regenerate_id();
-            $_SESSION['user_id'] = $user['UserID'];
+            $_SESSION['UserID'] = $user['UserID'];
+            $_SESSION['Username'] = $_POST['Username'];
 
-            header("Location: index.php");
+            header("Location: create_group.php");
             exit;
             
         }
@@ -59,20 +60,20 @@ $is_invalid = true;
    <!-- NAV -->
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container">
-                <a class="navbar-brand" href="index.html">                <img class="logo" width="150" height="55" src = 'images/mahber_logo2.png'></img></a>
+                <a class="navbar-brand" href="index.php">                <img class="logo" width="150" height="55" src = 'images/mahber_logo2.png'></img></a>
                 <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item navlink">
-                                <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                                <a class="nav-link" aria-current="page" href="index.php">Home</a>
                             </li>
                             <li class="nav-item navlink">
-                                <a class="nav-link" href="about.html">About</a>
+                                <a class="nav-link" href="about.php">About</a>
                             </li>
                             <li class="nav-item navlink">
-                                <a class="nav-link" href="contact.html">Contact</a>
+                                <a class="nav-link" href="contact.php">Contact</a>
                             </li>
                             <li class="nav-item">
                                 <button type = 'button' class='btn btn-outline-info p-1 m-1'>
@@ -101,9 +102,9 @@ $is_invalid = true;
                   <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
                   <fieldset>
                       <label for="username" class="form-label sr-only visually-hidden">Username</label>
-                      <input type="username" id='username' name="username" class="form-control" placeholder="Username" required autofocus>
+                      <input type="username" id='Username' name="Username" class="form-control" placeholder="Username" required autofocus>
                       <label for="password" class="form-label sr-only visually-hidden">Password</label>
-                      <input type="password" id='password' name="password" class="form-control" placeholder="Password" required><br>
+                      <input type="password" id='Password' name="Password" class="form-control" placeholder="Password" required><br>
                       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                   </fieldset>
                 </form>
@@ -114,9 +115,9 @@ $is_invalid = true;
             <div class = 'container-fluid'>
                 <span class = 'text-muted'>
                     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                        <li class="nav-item"><a href = 'index.html' class="nav-link px-2 text-muted">Home</a></li>
-                        <li class="nav-item"><a href = 'about.html' class="nav-link px-2 text-muted">About</a></li>
-                        <li class="nav-item"><a href = 'contact.html' class="nav-link px-2 text-muted">Contact</a></li>
+                        <li class="nav-item"><a href = 'index.php' class="nav-link px-2 text-muted">Home</a></li>
+                        <li class="nav-item"><a href = 'about.php' class="nav-link px-2 text-muted">About</a></li>
+                        <li class="nav-item"><a href = 'contact.php' class="nav-link px-2 text-muted">Contact</a></li>
                         <li class="nav-item"><a href = 'login.php' class="nav-link px-2 text-muted">Login</a></li>
                         <li class="nav-item"><a href = 'signup.html' class="nav-link px-2 text-muted">Sign Up</a></li>
                     </ul>

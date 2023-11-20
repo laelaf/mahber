@@ -1,4 +1,9 @@
 <!doctype html>
+<?php
+
+    session_start();
+
+?>
 <!-- Authors:
     Saly Camara
     Eisha Basit
@@ -19,34 +24,47 @@
 <!-- NAV -->
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container">
-        <a class="navbar-brand" href="index.html"><img class="logo" width="150" height="55" src='images/mahber_logo2.png'></a>
+        <a class="navbar-brand" href="index.php"><img class="logo" width="150" height="55" src='images/mahber_logo2.png'></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item navlink">
-                    <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link" aria-current="page" href="index.php">Home</a>
                 </li>
                 <li class="nav-item navlink">
-                    <a class="nav-link" href="about.html">About</a>
+                    <a class="nav-link" href="about.php">About</a>
                 </li>
                 <li class="nav-item navlink">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="contact.php">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <button type='button' class='btn btn-outline-info p-1 m-1'>
 
 
-                        <a class="nav-link active" href="login.php">Login</a>
+                                <?php if (isset($_SESSION['UserID'])): ?>
+                                <button type = 'button' class='btn btn-outline-info px-3 py-1 m-1'>
+                                    
+                                    <img src = 'images/Placeholder.png' style="width: 50px;height: 50px;"/>
+                                    <?php 
+                                        echo $_SESSION['Username'];
+                                    ?>                 
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button type = 'button' class='btn btn-outline-info px-3 py-3 m-1'>
+                                    <a href ='logout.php'>Log out</a>                          
+                                </button>
+                                <?php else: ?>
+                                    <button type='button' class='btn btn-outline-info p-1 m-1'>
+                                     <a class="nav-link active" href="login.php">Login</a>
+                                    </button>
+                                    <button type='button' class='btn btn-outline-info py-1 m-1'>
+                                    <a class="nav-link active" href="signup.html">Sign Up</a>
+                                </button>
+                                <?php endif; ?>
+                            </li>
 
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button type='button' class='btn btn-outline-info py-1 m-1'>
-                        <a class="nav-link active" href="signup.html">Sign Up</a>
-                    </button>
-                </li>
             </ul>
         </div>
     </div>
@@ -54,31 +72,34 @@
 
 <!-- CONTENT -->
 <!-- About Mahber Section -->
-<div class="container mt-5 mb-5">
 
-    <h1 class="text-center">About Mahber</h1>
-    <div class="container border shadow p-3 bg-light rounded mt-5 mb-5">
+<main class="flex-shrink-0">
+                
+    <div class="container mt-5 mb-5">
+        <h1 class="text-center">About Mahber</h1>
+        <div class="container border shadow p-3 bg-light rounded mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <h3>History</h3>
+                    <p>Mahber was founded in 2023 with the vision to revolutionize the traditional ROSCA model through technology. Our founders, coming from diverse backgrounds, saw the potential to empower communities by providing a reliable and transparent platform for financial collaboration.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3>Vision</h3>
+                    <p>Our vision is to become the world's leading digital ROSCA platform, enabling people to access community-based savings and lending services that are secure, user-friendly, and accessible to all.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3>Mission</h3>
+                    <p>Our mission is to provide an innovative and trustworthy ROSCA service that fosters financial inclusion, builds trust within communities, and promotes a culture of mutual support and economic growth.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3>Values</h3>
+                    <p>At Mahber, we uphold values such as integrity, community empowerment, innovation, and excellence. We believe in the strength of community finance and are committed to delivering exceptional service to our members.</p>
+                </div>
 
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <h3>History</h3>
-                <p>Mahber was founded in 2023 with the vision to revolutionize the traditional ROSCA model through technology. Our founders, coming from diverse backgrounds, saw the potential to empower communities by providing a reliable and transparent platform for financial collaboration.</p>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h3>Vision</h3>
-                <p>Our vision is to become the world's leading digital ROSCA platform, enabling people to access community-based savings and lending services that are secure, user-friendly, and accessible to all.</p>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h3>Mission</h3>
-                <p>Our mission is to provide an innovative and trustworthy ROSCA service that fosters financial inclusion, builds trust within communities, and promotes a culture of mutual support and economic growth.</p>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h3>Values</h3>
-                <p>At Mahber, we uphold values such as integrity, community empowerment, innovation, and excellence. We believe in the strength of community finance and are committed to delivering exceptional service to our members.</p>
             </div>
         </div>
     </div>
-</div>
+</main>
 
 <!-- Our Founders Section -->
 <div class="container mt-5">
@@ -140,9 +161,10 @@
     <div class='container-fluid'>
         <span class='text-muted'>
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href='index.html' class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href='about.html' class="nav-link px-2 text-muted">About</a></li>
-                <li class="nav-item"><a href='contact.html' class="nav-link px-2 text-muted">Contact</a></li>
+
+                <li class="nav-item"><a href='index.php' class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href='about.php' class="nav-link px-2 text-muted">About</a></li>
+                <li class="nav-item"><a href='contact.php' class="nav-link px-2 text-muted">Contact</a></li>
 
                 <li class="nav-item"><a href='login.php' class="nav-link px-2 text-muted">Login</a></li>
 

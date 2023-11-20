@@ -12,7 +12,7 @@
 <html lang='en'>
     <head>
         <meta charset="utf-8">
-        <title>BOOTSTRAP Mahber Home</title>
+        <title>Mahber signed up</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- bootstrap CSS link -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -23,14 +23,14 @@
 <!-- #7EF9FF  or #E5F3FD for a very muted color, #D1EDF2, #29C5F6,  #77d4fc mahber color-->
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container">
-                <a class="navbar-brand" href="index.html">                <img class="logo" width="150" height="55" src = 'images/mahber_logo2.png'></img></a>
+                <a class="navbar-brand" href="index.php">                <img class="logo" width="150" height="55" src = 'images/mahber_logo2.png'></img></a>
                 <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item navlink">
-                                <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                                <a class="nav-link" aria-current="page" href="index.php">Home</a>
                             </li>
                             <li class="nav-item navlink">
                                 <a class="nav-link" href="about.php">About</a>
@@ -65,34 +65,21 @@
                     </div>
             </div>
         </nav>
+		
+	<main class="flex-shrink-0">
+        <div class='container border shadow bg-light mt-5 mb-5 p-5'>
+        	<h2 class='text-center'>Create New Group </h2>
+        	<p class='text-center'> Group Created Sucessfully!<p>
+            <p class='text-center'>You can now <a href='#'>View Dashboard</a></p>
 
-<!-- this is where page content goes, inside MAIN -->
-        <main class="flex-shrink-0">
-            
-                    
-          <div class="container border shadow p-3 bg-light rounded mt-5 mb-5">
-
-            <div class="px-4 py-5 my-5 text-center">
-                <img class="logo" width="200" height="75" src = 'images/mahber_logo2.png'/>
-                <!--<h1 class="display-5 fw-bold text-body-emphasis">Mahber ROSCA</h1>-->
-                <div class="col-lg-6 mx-auto">
-                    <br><p class="lead mb-4 fw-bold" style = 'color:#010c80;'>Transparency | Efficiency | Security</p>
-                  <p class="lead mb-4">Mahber is the world's first all-in-one ROSCA management tool. We are dedicated to providing secure and efficient tools to quickly create and administer ROSCA group activities. Mahber promises transparency, efficiency, and security.</p>
-                  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <button type="button" class="btn btn-outline-secondary btn-lg px-4 gap-3"><a class="nav-link active" href="login.php">Login</a></button>
-                    <button type="button" class="btn btn-primary btn-lg px-4"><a class="nav-link active" href="signup.html">Sign Up</a></button>
-                  </div>
-                </div>
-            </div>
-          </div>
-        </main>
-
-        
-        <footer class = 'footer py-3 mt-auto fixed-bottom bg-light'>
+		
+		</div>
+	</main>
+	<footer class = 'footer py-3 mt-auto fixed-bottom bg-light'>
             <div class = 'container-fluid'>
                 <span class = 'text-muted'>
                     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                        <li class="nav-item"><a href = 'index.html' class="nav-link px-2 text-muted">Home</a></li>
+                        <li class="nav-item"><a href = 'index.php' class="nav-link px-2 text-muted">Home</a></li>
                         <li class="nav-item"><a href = 'about.php' class="nav-link px-2 text-muted">About</a></li>
                         <li class="nav-item"><a href = 'contact.php' class="nav-link px-2 text-muted">Contact</a></li>
                         <li class="nav-item"><a href = 'login.php' class="nav-link px-2 text-muted">Login</a></li>
@@ -106,5 +93,3 @@
         <!-- bootstrap JS link -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     </body>
-
-</html>
