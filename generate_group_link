@@ -1,0 +1,24 @@
+<!-- Add this script in the <head> or at the end of the <body> section -->
+<script>
+    // Function to generate a random group invite link
+    function generateInviteLink() {
+        // Generate a random string (you can use a more secure method if needed)
+        const randomString = Math.random().toString(36).substring(2, 10);
+
+        // Get the current URL
+        const currentUrl = window.location.href;
+
+        // Construct the invite link
+        const inviteLink = `${currentUrl}?invite=${randomString}`;
+
+        // Display the invite link (you can modify this based on your UI)
+        alert(`Group Invite Link:\n${inviteLink}`);
+
+        // You can also update the UI or send the link to the server as needed
+    }
+</script>
+
+<!-- Add this button inside your form -->
+<button type="button" class="btn btn-primary" onclick="generateInviteLink()">Generate Invite Link</button>
+
+
