@@ -73,7 +73,7 @@
         
         <div class = 'container border shadow bg-light mt-5 mb-5 p-5'>
             <h2 class='text-center'>Create New Group</h2>
-             <form action='#' method='post' class='create-group-form' id='create-group-form'> 
+             <form action='process-group.php' method='post' class='create-group-form' id='create-group-form'> 
                     
                         <p>
                             <label>Group Name: </label> 
