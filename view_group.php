@@ -32,7 +32,7 @@ $groupDetails = $result->fetch_all(MYSQLI_ASSOC);
 
 // HTML and Bootstrap for layout
 ?>
-<<!doctype html>
+<!doctype html>
 <!-- Authors:
     Saly Camara
     Eisha Basit

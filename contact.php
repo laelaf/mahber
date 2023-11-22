@@ -73,7 +73,7 @@
   
   <div class="container border shadow bg-light mt-5 mb-5 p-5">
     <h2 class='text-center'>Contact Us</h2>
-    <form class = 'contact-form-signin'>
+    <form class = 'contact-form-signin' action='#' method='#'>
         <div class="row mb-3">
             <div class="col">
                 <label for="firstName" class="form-label">First Name</label>
