@@ -43,13 +43,14 @@
 
 
                                 <?php if (isset($_SESSION['UserID'])): ?>
-                                <button type = 'button' class='btn btn-outline-info px-3 py-1 m-1'>
-                                    
-                                    <img src = 'images/Placeholder.png' style="width: 50px;height: 50px;"/>
-                                    <?php 
-                                        echo $_SESSION['Username'];
-                                    ?>                 
-                                </button>
+                                <a href='dashboard.php'>
+                                    <button type = 'button' class='btn btn-outline-info px-3 py-1 m-1'>
+                                        <img src = 'images/Placeholder.png' style="width: 50px;height: 50px;"/>
+                                        <?php 
+                                            echo $_SESSION['Username'];
+                                        ?>                 
+                                    </button>
+                                 </a>
                             </li>
                             <li class="nav-item">
                                 <button type = 'button' class='btn btn-outline-info px-3 py-3 m-1'>
