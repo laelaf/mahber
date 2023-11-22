@@ -17,7 +17,7 @@ $host = 'eishabasit.com';
                                 database: $dbname );
 
         // fails to connect, give reason
-
+/*
         if ($mysqli->connect_errno) {
             die ("Connection error: " . $mysqli->connect_error);
         }
@@ -29,6 +29,7 @@ $host = 'eishabasit.com';
         else{
             echo "Error: " . mysqli_error($mysqli);
         }
+*/
 return $mysqli;
 
 /* http://eishabasit.com/mahber/mahber3/signup.html */

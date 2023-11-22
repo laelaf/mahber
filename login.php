@@ -25,7 +25,7 @@ require 'database.php';
             $_SESSION['UserID'] = $user['UserID'];
             $_SESSION['Username'] = $_POST['Username'];
 
-            header("Location: create_group.php");
+            header("Location: dashboard.php");
             exit;
             
         }
