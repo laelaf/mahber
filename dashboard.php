@@ -52,7 +52,7 @@ function getPaymentStatus($paymentDate) {
 <html lang='en'>
      <head>                     
         <meta charset="utf-8">
-        <title>BOOTSTRAP Mahber Login</title>
+        <title>Mahber Dashboard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- bootstrap CSS link -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -193,8 +193,7 @@ function getPaymentStatus($paymentDate) {
                         <li class="nav-item"><a href = 'index.php' class="nav-link px-2 text-muted">Home</a></li>
                         <li class="nav-item"><a href = 'about.php' class="nav-link px-2 text-muted">About</a></li>
                         <li class="nav-item"><a href = 'contact.php' class="nav-link px-2 text-muted">Contact</a></li>
-                        <li class="nav-item"><a href = 'login.php' class="nav-link px-2 text-muted">Login</a></li>
-                        <li class="nav-item"><a href = 'signup.html' class="nav-link px-2 text-muted">Sign Up</a></li>
+                        <li class="nav-item"><a href='faq.html' class="nav-link px-2 text-muted">FAQ</a></li>
                     </ul>
                     <p class='text-center text-muted'>&copy; 2023 Mahber</p>
                 </span>
