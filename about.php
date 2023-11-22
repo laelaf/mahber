@@ -104,7 +104,7 @@
         <!-- Co-founder 1 -->
         <div class="col-lg-3 col-sm-6 mb-4 p-2 border shadow rounded">
             <div class="card h-100">
-                <img src="images/Placeholder.png" class="card-img-top" alt="Co-founder 1">
+                <img src="images/eisha.jpg" class="card-img-top" alt="Co-founder 1">
                 <div class="card-body">
                     <h5 class="card-title">Eisha Basit</h5>
                     <p class="card-text">CEO</p>
