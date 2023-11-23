@@ -114,79 +114,79 @@ function getPaymentStatus($paymentDate) {
 
 <!-- Content  -->
 
-
-<div class="container mt-3">
-    <div style="display: inline-block; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,.2);">
-        <h1>Welcome, <?php echo htmlspecialchars($user['FirstName']); ?>!</h1>
-    </div>
-</div>
-
-<div class="container mt-4">
-    <h2>Groups I Administer</h2>
-    <div>
-        <?php foreach ($adminGroups as $group): ?>
-            <div class="card my-2">
-                <div class="card-body"style="display: inline-block; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,.2);">
-                    <?php echo htmlspecialchars($group['GroupName']); ?>
-                    <!-- Link to view group details -->
-                    <a href="view_group.php?group_id=<?php echo htmlspecialchars($group['GroupID']); ?>" class="btn btn-sm btn-primary float-end">View Group</a>
+<main class="flex-shrink-0">
+    <div class="container border shadow p-3 bg-light rounded mt-5 mb-5">
+        <h1 class='text-center'>Welcome, <?php echo htmlspecialchars($user['FirstName']); ?>!</h1>
+   
+    <div class="container mt-4">
+        <h2>MyAdmin</h2>
+        <div>
+            <?php foreach ($adminGroups as $group): ?>
+                <div class="card my-2">
+                    <div class="card-body"style="display: inline-block; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,.2);">
+                        <?php echo htmlspecialchars($group['GroupName']); ?>
+                        <!-- Link to view group details -->
+                        <a href="view_group.php?group_id=<?php echo htmlspecialchars($group['GroupID']); ?>" class="btn btn-sm btn-primary float-end">Manage Groups</a>
+                    </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
-        <?php if (empty($adminGroups)): ?>
-            <p>You are not an admin of any group.</p>
-        <?php endif; ?>
-    </div>
-</div>
-
-
-
-<div class="container mt-4">
-    <div class="row">
-        <div class="col">
-            <h2>My Groups and Payments</h2>
-            <table class="table table-responsive table-hover">
-    <thead class="thead-light">
-        <tr>
-            <th>Group ID</th>
-            <th>Group Name</th>
-            <th>Payment Amount</th>
-            <th>Payment Date</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($groups as $group): ?>
-        <tr>
-            <td><?php echo htmlspecialchars($group['GroupID']); ?></td>
-            <td><?php echo htmlspecialchars($group['GroupName']); ?></td>
-            <td><?php echo htmlspecialchars(number_format((float)$group['PaymentAmount'], 0, '.', '')); ?></td>
-            <td><?php echo htmlspecialchars($group['ContributionDate'] ?? 'N/A'); ?></td>
-            <td><?php echo getPaymentStatus($group['ContributionDate'] ?? 'N/A'); ?></td>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
-
+            <?php endforeach; ?>
+            <?php if (empty($adminGroups)): ?>
+                <p>You are not an admin of any group.</p>
+            <?php endif; ?>
         </div>
     </div>
+
+
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col">
+                <h2>My Groups and Payments</h2>
+                <table class="table table-responsive table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Group ID</th>
+                            <th>Group Name</th>
+                            <th>Payment Amount</th>
+                            <th>Payment Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($groups as $group): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($group['GroupID']); ?></td>
+                            <td><?php echo htmlspecialchars($group['GroupName']); ?></td>
+                            <td><?php echo htmlspecialchars(number_format((float)$group['PaymentAmount'], 0, '.', '')); ?></td>
+                            <td><?php echo htmlspecialchars($group['ContributionDate'] ?? 'N/A'); ?></td>
+                            <td><?php echo getPaymentStatus($group['ContributionDate'] ?? 'N/A'); ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <!-- Action Buttons -->
+    <div class="container my-4 text-center">
+        <a href="create_group.php" class="btn btn-primary mx-2">Create Rosca Group</a>
+        <a href="#" class="btn btn-secondary mx-2">Join Rosca Group</a>
+        <a href="report.php" class="btn btn-success mx-2">View Report</a>
+        <a href="#" class="btn btn-success mx-2">Make Contribution</a>
+    </div>
 </div>
+</main>
 
 
->
 
-<!-- Action Buttons -->
-<div class="container my-4 text-center">
-    <a href="create_group.php" class="btn btn-primary mx-2">Create Rosca Group</a>
-    <a href="#" class="btn btn-secondary mx-2">Join Rosca Group</a>
-    <a href="report.php" class="btn btn-success mx-2">View Report</a>
-    <a href="#" class="btn btn-success mx-2">Make Contribution</a>
-</div>
+
+
 
 
 
 <!-- content end -->
-<footer class = 'footer py-3 mt-auto bg-light'>
+<footer class = 'footer fixed-bottom py-3 mt-auto bg-light'>
             <div class = 'container-fluid'>
                 <span class = 'text-muted'>
                     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
