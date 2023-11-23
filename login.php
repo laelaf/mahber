@@ -18,7 +18,7 @@ require 'database.php';
 
     if ($user) {
 
-        if ($_POST['Password'] == $user['Password']) {
+        if (password_verify($_POST['Password'], $user['Password'])) {
             
             session_start();
             session_regenerate_id();
