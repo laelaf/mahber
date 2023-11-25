@@ -51,46 +51,28 @@
         </nav>
 
   <!-- CONTENT -->
-    <div>
-    <h2>Join ROSCA Group</h2>
-    <form id="joinForm" onsubmit="joinGroup(); return false;">
-        <!-- Add input fields for necessary information -->
-        <label for="groupId">Group ID:</label>
-        <input type="text" id="groupId" name="groupId" required>
+ <div class='container'>
+        <form id="joinForm" action='join-group.php' method='post'>
+            <fieldset>
+                <legend>Join ROSCA Group</legend><br>
+                <p>
+                    <label>Group ID: </label>
+                    <input type='text' id='groupId' name='groupId' placeholder="Enter Group ID" required />
+                </p>
+                <!--<p>
+                    <label>Your Username: </label>
+                    <input type='text' id='username' name='username' placeholder="Enter Your Username" required />
+                </p>
+                <p>
+                    <label>Your Password: </label>
+                    <input type='password' id='password' name='password' placeholder="Enter Your Password" required />
+                </p>-->
+            </fieldset>
+            <br />
+            <button type="submit" class="btn btn-primary">Join Group</button>
+        </form>
+    </div>
 
-        <label for="username">Your Username:</label>
-        <input type="text" id="username" name="username" required>
-
-        <label for="password">Your Password:</label>
-        <input type="password" id="password" name="password" required>
-
-        <!-- Add any additional fields as needed -->
-
-        <button type="submit">Join Group</button>
-    </form>
-</div>
-
-<script>
-    function joinGroup() {
-        // Retrieve values from the form
-        const groupId = document.getElementById('groupId').value;
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-
-        // Perform any additional validation or processing here
-
-        // You can send the data to the server for further processing
-        // Example: You can use AJAX to send a request to the server
-
-        // For demonstration purposes, let's log the data to the console
-        console.log('Group ID:', groupId);
-        console.log('Username:', username);
-        console.log('Password:', password);
-
-        // You can customize this function based on how you handle the join operation
-        // Redirect to a success page or show a confirmation message, etc.
-    }
-</script>
  <!-- FOOTER -->
         <footer class = 'footer py-3 fixed-bottom mt-auto bg-light'>
             <div class = 'container-fluid'>

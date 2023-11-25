@@ -52,25 +52,7 @@
 
   <!-- CONTENT -->
  <div class='container'>
-        <form id="joinForm" onsubmit="joinGroup(); return false;">
-            <fieldset>
-                <legend>Join ROSCA Group</legend><br>
-                <p>
-                    <label>Group ID: </label>
-                    <input type='text' id='groupId' name='groupId' placeholder="Enter Group ID" required />
-                </p>
-                <!--<p>
-                    <label>Your Username: </label>
-                    <input type='text' id='username' name='username' placeholder="Enter Your Username" required />
-                </p>
-                <p>
-                    <label>Your Password: </label>
-                    <input type='password' id='password' name='password' placeholder="Enter Your Password" required />
-                </p>-->
-            </fieldset>
-            <br />
-            <button type="submit" class="btn btn-primary">Join Group</button>
-        </form>
+        
     </div>
 
  <!-- FOOTER -->
