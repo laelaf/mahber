@@ -171,7 +171,7 @@ function getPaymentStatus($paymentDate) {
     <!-- Action Buttons -->
     <div class="container my-4 text-center">
         <a href="create_group.php" class="btn btn-primary mx-2">Create Rosca Group</a>
-        <a href="#" class="btn btn-secondary mx-2">Join Rosca Group</a>
+        <a href="join_group.php" class="btn btn-secondary mx-2">Join Rosca Group</a>
         <a href="report.php" class="btn btn-success mx-2">View Report</a>
         <a href="#" class="btn btn-success mx-2">Make Contribution</a>
     </div>
