@@ -56,22 +56,14 @@
         </nav>
 
   <!-- CONTENT -->
- <div class='container'>
-        <form id="joinForm" action='process-join-group.php' method='post'>
+ <div class='container border shadow bg-light mt-5 mb-5 p-5'>
+        <form id="joinForm" action='process-join-group.php' method='post' class='contact-form-signin text-center'>
             <fieldset>
                 <legend>Join ROSCA Group</legend><br>
                 <p>
                     <label>Group ID: </label>
                     <input type='text' id='groupId' name='groupId' placeholder="Enter Group ID" required />
                 </p>
-                <!--<p>
-                    <label>Your Username: </label>
-                    <input type='text' id='username' name='username' placeholder="Enter Your Username" required />
-                </p>
-                <p>
-                    <label>Your Password: </label>
-                    <input type='password' id='password' name='password' placeholder="Enter Your Password" required />
-                </p>-->
             </fieldset>
             <br />
             <button type="submit" class="btn btn-primary">Join Group</button>

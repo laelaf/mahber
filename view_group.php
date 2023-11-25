@@ -40,7 +40,7 @@ require 'database.php';
 
             $userData = $result->fetch_assoc();
 
-            var_dump($userData);
+            //var_dump($userData);
             //exit;
 
            /*$sql_2 = "INSERT INTO GroupRoster_R set  

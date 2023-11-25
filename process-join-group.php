@@ -70,7 +70,7 @@
         </nav>
 
   <!-- CONTENT -->
- <div class='container'>
+ <div class='container border shadow bg-light mt-5 mb-5 p-5'>
   
 <?php      
         
@@ -83,6 +83,11 @@
 
             $groupData = $result->fetch_assoc();
 
+            if (!$groupData) {
+                echo 'Group ID not found!';
+                echo "<p>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
+            }else{
+
             //var_dump($groupData);
             //exit;
 
@@ -92,7 +97,10 @@
 
             mysqli_query($mysqli, $sql_2);
 
-            echo "You have joined Group ID: " . $_POST['groupId'] . "!";
+            echo "<p>You have joined Group ID: " . $_POST['groupId'] . "!</p>";
+            echo "<p>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
+            }
+
 
 ?>
     </div>
