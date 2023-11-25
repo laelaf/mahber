@@ -41,14 +41,28 @@
                                 <a class="nav-link" href="contact.html">Contact</a>
                             </li>
                             <li class="nav-item">
-                                <button type = 'button' class='btn btn-outline-info p-1 m-1'>
-                                    <a class="nav-link active" href="login.php">Login</a>
-                                </button>
+                                <?php if (isset($_SESSION['UserID'])): ?>
+                                <a href='dashboard.php'>
+                                    <button type = 'button' class='btn btn-outline-info px-3 py-1 m-1'>
+                                        <img src = 'images/Placeholder.png' style="width: 50px;height: 50px;"/>
+                                        <?php 
+                                            echo $_SESSION['Username'];
+                                        ?>                 
+                                    </button>
+                                 </a>
                             </li>
                             <li class="nav-item">
-                                <button type = 'button' class='btn btn-outline-info py-1 m-1'>
+                                <button type = 'button' class='btn btn-outline-info px-3 py-3 m-1'>
+                                    <a href ='logout.php'>Log out</a>                          
+                                </button>
+                                <?php else: ?>
+                                    <button type='button' class='btn btn-outline-info p-1 m-1'>
+                                     <a class="nav-link active" href="login.php">Login</a>
+                                    </button>
+                                    <button type='button' class='btn btn-outline-info py-1 m-1'>
                                     <a class="nav-link active" href="signup.html">Sign Up</a>
                                 </button>
+                                <?php endif; ?>
                             </li>
                         </ul>
                     </div>
@@ -78,8 +92,7 @@
                         <li class="nav-item"><a href = 'index.html' class="nav-link px-2 text-muted">Home</a></li>
                         <li class="nav-item"><a href = 'about.html' class="nav-link px-2 text-muted">About</a></li>
                         <li class="nav-item"><a href = 'contact.html' class="nav-link px-2 text-muted">Contact</a></li>
-                        <li class="nav-item"><a href = 'login.php' class="nav-link px-2 text-muted">Login</a></li>
-                        <li class="nav-item"><a href = 'signup.html' class="nav-link px-2 text-muted">Sign Up</a></li>
+                        <li class="nav-item"><a href='faq.html' class="nav-link px-2 text-muted">FAQ</a></li>
                     </ul>
                     <p class='text-center text-muted'>&copy; 2023 Mahber</p>
                 </span>
