@@ -30,8 +30,32 @@ $groupDetailsStmt->execute();
 $result = $groupDetailsStmt->get_result();
 $groupDetails = $result->fetch_all(MYSQLI_ASSOC);
 
+/* // SCRAPPED THIS SECTION
+require 'database.php';
+
+            $sql = sprintf("SELECT * FROM User_R 
+                            WHERE UserID = '%s'", $_POST["add_user_id"]);
+
+            $result = $mysqli->query($sql);
+
+            $userData = $result->fetch_assoc();
+
+            //var_dump($userData);
+            //exit;
+
+           $sql_2 = "INSERT INTO GroupRoster_R set  
+            GroupID = '$groupId',
+            UserID = $_POST["add_user_id"]";
+
+            mysqli_query($mysqli, $sql_2);
+
+            echo "You have added User ID: " . $_POST["add_user_id"] . "!";
+
+            //echo "<a href = 'view_group.php'>View Group</a>";*/
+
 // HTML and Bootstrap for layout
 ?>
+
 <!doctype html>
 <!-- Authors:
     Saly Camara
@@ -125,6 +149,18 @@ $groupDetails = $result->fetch_all(MYSQLI_ASSOC);
                 <?php endforeach; ?>
             </tbody>
         </table>
+
+        <div class="container my-4 text-center">
+            <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
+        </div>
+
+        <!-- add user to group (admin side) 
+        <div class="container my-4 text-center">
+            <form method='post'>
+                <input type ='text' placeholder="'U123'" id = 'add_user_id' name = 'add_user_id'>
+                <input type='submit' value ='Add User' class="btn btn-secondary mx-2"/>
+            </form>
+        </div>-->
     </div>
 
     <!-- ... [footer] ... -->

@@ -29,7 +29,7 @@ $groups = $groupStmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
 
 
-function getPaymentStatus($paymentDate) {
+/*function getPaymentStatus($paymentDate) {
     $currentDate = new DateTime();
     $paymentDateTime = new DateTime($paymentDate);
 
@@ -38,7 +38,7 @@ function getPaymentStatus($paymentDate) {
     } else {
         return 'Payment Due';
     }
-}
+}*/
 
 ?>
 
@@ -149,7 +149,7 @@ function getPaymentStatus($paymentDate) {
                             <th>Group Name</th>
                             <th>Payment Amount</th>
                             <th>Payment Date</th>
-                            <th>Status</th>
+                            <!--<th>Status</th>-->
                         </tr>
                     </thead>
                     <tbody>
@@ -159,7 +159,7 @@ function getPaymentStatus($paymentDate) {
                             <td><?php echo htmlspecialchars($group['GroupName']); ?></td>
                             <td><?php echo htmlspecialchars(number_format((float)$group['PaymentAmount'], 0, '.', '')); ?></td>
                             <td><?php echo htmlspecialchars($group['ContributionDate'] ?? 'N/A'); ?></td>
-                            <td><?php echo getPaymentStatus($group['ContributionDate'] ?? 'N/A'); ?></td>
+                            <!--<td><?php //echo getPaymentStatus($group['ContributionDate'] ?? 'N/A'); ?></td>-->
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -171,9 +171,11 @@ function getPaymentStatus($paymentDate) {
     <!-- Action Buttons -->
     <div class="container my-4 text-center">
         <a href="create_group.php" class="btn btn-primary mx-2">Create Rosca Group</a>
-        <a href="#" class="btn btn-secondary mx-2">Join Rosca Group</a>
-        <a href="report.php" class="btn btn-success mx-2">View Report</a>
+        <a href="invite_member.php" class="btn btn-primary mx-2">Invite User</a>
+        <a href="join_group.php" class="btn btn-secondary mx-2">Join Rosca Group</a>
         <a href="#" class="btn btn-success mx-2">Make Contribution</a>
+        <a href="report.php" class="btn btn-secondary mx-2">View Report</a>
+
     </div>
 </div>
 </main>
