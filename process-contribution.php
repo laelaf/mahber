@@ -122,24 +122,42 @@
         require 'database.php';
         
         mysqli_select_db ( $mysqli , $dbname);
+        //-----------------------
 
-        $sql_1 = "UPDATE Group_R set  
+        $userId = $_SESSION['UserID']; // Replace with the actual user ID
+        $currentMonthYear = date("Y-m");
+
+
+        // Check if the user has already made a contribution in the current month to the specified group
+        $sql = "SELECT COUNT(*) as contributionCount FROM Contribution_R WHERE UserID = '$userId' AND GroupID = '$groupId' AND ContributionDate='$currentMonthYear'";
+        mysqli_query($mysqli, $sql);
+echo $currentMonthYear;
+
+        if ($contributionCount == 0) {
+
+            $sql_1 = "UPDATE Group_R set  
                     GroupFund = (GroupFund + $cont_payment)
                     WHERE GroupID = '$groupId'";
 
-        mysqli_query($mysqli, $sql_1);
-        echo "wrote to Group_R";
+            mysqli_query($mysqli, $sql_1);
+            echo "wrote to Group_R";
 
-        $sql_2 = "INSERT INTO Contribution_R set   
-            PaymentID = '$contributionID',
-            GroupID = '$groupId',
-            UserID = '$_SESSION[UserID]',
-            PaymentAmount = '$cont_payment',
-            ContributionDate = '$date'";
-                        
-        mysqli_query($mysqli, $sql_2);
+            $sql_2 = "INSERT INTO Contribution_R set   
+                PaymentID = '$contributionID',
+                GroupID = '$groupId',
+                UserID = '$_SESSION[UserID]',
+                PaymentAmount = '$cont_payment',
+                ContributionDate = '$date'";
+                            
+            mysqli_query($mysqli, $sql_2);
 
-    echo "wrote to contribution!!";
+            echo "wrote to contribution!!";
+
+        }else{
+           
+            echo 'ERROR: You have already made a payment this month!';
+        
+        }
         
 ?>
         <div class="container my-4 text-center">
