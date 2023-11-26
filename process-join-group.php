@@ -84,8 +84,8 @@
             $groupData = $result->fetch_assoc();
 
             if (!$groupData) {
-                echo 'Group ID not found!';
-                echo "<p>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
+                echo '<p class = "text-center">Group ID not found!</p>';
+                echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
             }else{
 
             //var_dump($groupData);
@@ -97,8 +97,8 @@
 
             mysqli_query($mysqli, $sql_2);
 
-            echo "<p>You have joined Group ID: " . $_POST['groupId'] . "!</p>";
-            echo "<p>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
+            echo "<p class = 'text-center'>You have joined Group ID: " . $_POST['groupId'] . "!</p>";
+            echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
             }
 
 

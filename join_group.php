@@ -32,13 +32,13 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item navlink">
-                                <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                                <a class="nav-link" aria-current="page" href="index.php">Home</a>
                             </li>
                             <li class="nav-item navlink">
-                                <a class="nav-link" href="about.html">About</a>
+                                <a class="nav-link" href="about.php">About</a>
                             </li>
                             <li class="nav-item navlink">
-                                <a class="nav-link" href="contact.html">Contact</a>
+                                <a class="nav-link" href="contact.php">Contact</a>
                             </li>
                             <li class="nav-item">
                                 <?php if (isset($_SESSION['UserID'])): ?>
@@ -71,16 +71,22 @@
 
   <!-- CONTENT -->
  <div class='container border shadow bg-light mt-5 mb-5 p-5'>
-        <form id="joinForm" action='process-join-group.php' method='post' class='contact-form-signin text-center'>
+        <h1 class = 'text-center'>Join ROSCA Group</h1><br>
+        <form id="joinForm" action='process-join-group.php' method='post' class='form-signin'>
             <fieldset>
-                <legend>Join ROSCA Group</legend><br>
+                
                 <p>
-                    <label>Group ID: </label>
-                    <input type='text' id='groupId' name='groupId' placeholder="Enter Group ID" required />
+                    <label>Group ID: </label><br>
+                    <input type='text' id='groupId' name='groupId' placeholder="Enter Group ID" required class="form-control"/>
                 </p>
+                <!--<p>
+                    <label>Group Name: </label><br>
+                    <input type='text' id='groupId' name='groupId' class="form-control" readonly />
+                </p>-->
             </fieldset>
-            <br />
-            <button type="submit" class="btn btn-primary">Join Group</button>
+            <p class = 'text-center'>
+                <button type="submit" class="btn btn-primary">Join Group</button>
+            </p>
         </form>
     </div>
 
@@ -89,9 +95,9 @@
             <div class = 'container-fluid'>
                 <span class = 'text-muted'>
                     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                        <li class="nav-item"><a href = 'index.html' class="nav-link px-2 text-muted">Home</a></li>
-                        <li class="nav-item"><a href = 'about.html' class="nav-link px-2 text-muted">About</a></li>
-                        <li class="nav-item"><a href = 'contact.html' class="nav-link px-2 text-muted">Contact</a></li>
+                        <li class="nav-item"><a href = 'index.php' class="nav-link px-2 text-muted">Home</a></li>
+                        <li class="nav-item"><a href = 'about.php' class="nav-link px-2 text-muted">About</a></li>
+                        <li class="nav-item"><a href = 'contact.php' class="nav-link px-2 text-muted">Contact</a></li>
                         <li class="nav-item"><a href='faq.html' class="nav-link px-2 text-muted">FAQ</a></li>
                     </ul>
                     <p class='text-center text-muted'>&copy; 2023 Mahber</p>
