@@ -72,10 +72,10 @@
   <!-- CONTENT -->
  <div class='container border shadow bg-light mt-5 mb-5 p-5'>
         <h1 class = 'text-center'>Make Contribution Payment</h1><br>
-        <form action='#' method='post'>
+        <form action='#' method='get' class='contact-form-signin'>
             <fieldset>
                 <p>
-                    <label>Group ID: </label><br>
+                    <label for='groupId'>Group ID: </label>
                     <?php 
                         require 'database.php';
         
@@ -85,15 +85,27 @@
                             WHERE UserID = '%s'", $_SESSION["UserID"]);
 
                         $result = $mysqli->query($sql);
+                        //print_r($result);
 
-                        $groupData = $result->fetch_assoc();
-                            var_dump($groupData);
+                        //echo '<br><br>';
+
+                        $groups = $result->fetch_all(MYSQLI_ASSOC);
+                        //print_r($groupData);
 
                      ?>
-                    <!--<select id='groupId' name='groupId'required class="form-control">
+                    <select id='groupId' name='groupId'required class="form-control">
+                        <option>Click to Select GroupID</option>
+                        <?php 
+                            foreach ($groups as $group){
+                                echo "<option value='{$group['GroupID']}'>{$group['GroupID']}</option>";
+                            }
+                        ?>
+                    </select>
+                </p>
+                <p>
+                    <label for='contribution_amt'>Contribution Amount</label>
 
-                    </select>-->
-                    Input a select here that pulls shows the groups this user belongs to...
+                    <input type='text' id='contribution_amt' name='contribution_amt' required class="form-control" readonly />
                 </p>
                 
             </fieldset>
@@ -120,6 +132,34 @@
 
 <!-- bootstrap JS link -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+        <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var groupIdSelect = document.getElementById('groupId');
+        var contributionAmtInput = document.getElementById('contribution_amt');
+
+        groupIdSelect.addEventListener('change', function () {
+            // Get the selected Group ID
+            var selectedGroupId = groupIdSelect.value;
+
+            // Make an AJAX request to fetch contribution information
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'get_contribution_info.php?groupId=' + selectedGroupId, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Parse the JSON response
+                    var contributionInfo = JSON.parse(xhr.responseText);
+
+                    // Set the Contribution Amount input value
+                    contributionAmtInput.value = contributionInfo.amount;
+                }
+            };
+
+            xhr.send();
+        });
+    });
+</script>
 
     </body>
 </html>
