@@ -17,6 +17,7 @@
     <!-- bootstrap CSS link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel='stylesheet' href='style2.css' />
+    <link rel = 'stylesheet' href = 'form.css'/>
 </head>
 
 <body class="d-flex flex-column h-100" style='background-color: #d1edf2;'>
@@ -30,13 +31,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item navlink">
-                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link" aria-current="page" href="index.php">Home</a>
                     </li>
                     <li class="nav-item navlink">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="about.php">About</a>
                     </li>
                     <li class="nav-item navlink">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="contact.php">Contact</a>
                     </li>
                     <li class="nav-item">
                                 <?php if (isset($_SESSION['UserID'])): ?>
@@ -70,24 +71,26 @@
     <!-- this is where page content goes, inside MAIN -->
     <main class="flex-shrink-0">
         <div class="container border shadow p-3 bg-light rounded mt-5 mb-5">
-                    <!-- Invite ROSCA Members Form -->
-                    <form id="inviteForm" class="mt-5">
-                     <h3 class="mb-4">Invite ROSCA Members</h3>
-                    <div class="mb-3">
-                    <label for="inviteeEmail" class="form-label">Invitee's Email:</label>
-                    <input type="email" class="form-control" id="inviteeEmail" name="inviteeEmail" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
-                   <div class="invalid-feedback">
-                   Please enter a valid email address.
-                 </div>
-    </div>
-    <div class="mb-3">
-        <label for="invitationMessage" class="form-label">Invitation Message:</label>
-        <textarea class="form-control" id="invitationMessage" name="invitationMessage" rows="4" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-success">Send Invitation</button>
-</form>
-                </div>
-            </div>
+            <!-- Invite ROSCA Members Form -->
+            <form id="inviteForm" class="mt-5 contact-form-signin">
+                <h3 class="mb-4 text-center">Invite ROSCA Members</h3>
+                <fieldset>
+                    <p>
+                        <label for="inviteeEmail" class="form-label">Invitee's Email:</label>
+                        <input type="email" class="form-control text-center" id="inviteeEmail" name="inviteeEmail" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="'john123@email.com'">
+                    </p>
+                        <div class="invalid-feedback">
+                            Please enter a valid email address.
+                        </div>
+                    <p>
+                        <label for="invitationMessage" class="form-label">Invitation Message:</label>
+                        <textarea class="form-control" id="invitationMessage" name="invitationMessage" rows="4" required placeholder='"Hi! Join me on Mahber..."'></textarea>
+                    </p>
+                    <p class='text-center'>
+                        <button type="submit" class="btn btn-primary">Send Invitation</button>
+                    </p>
+                </fieldset>
+            </form>
         </div>
     </main>
 
@@ -97,9 +100,9 @@
             <div class = 'container-fluid'>
                 <span class = 'text-muted'>
                     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                        <li class="nav-item"><a href = 'index.html' class="nav-link px-2 text-muted">Home</a></li>
-                        <li class="nav-item"><a href = 'about.html' class="nav-link px-2 text-muted">About</a></li>
-                        <li class="nav-item"><a href = 'contact.html' class="nav-link px-2 text-muted">Contact</a></li>
+                        <li class="nav-item"><a href = 'index.php' class="nav-link px-2 text-muted">Home</a></li>
+                        <li class="nav-item"><a href = 'about.php' class="nav-link px-2 text-muted">About</a></li>
+                        <li class="nav-item"><a href = 'contact.php' class="nav-link px-2 text-muted">Contact</a></li>
                         <li class="nav-item"><a href='faq.html' class="nav-link px-2 text-muted">FAQ</a></li>
                     </ul>
                     <p class='text-center text-muted'>&copy; 2023 Mahber</p>
