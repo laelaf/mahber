@@ -12,7 +12,7 @@
 <html lang='en'>
      <head>                     
         <meta charset="utf-8">
-        <title>Join Group</title>
+        <title>Make Contribution</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- bootstrap CSS link -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -71,21 +71,46 @@
 
   <!-- CONTENT -->
  <div class='container border shadow bg-light mt-5 mb-5 p-5'>
-        <h1 class = 'text-center'>Join ROSCA Group</h1><br>
-        <form id="joinForm" action='process-join-group.php' method='post' class='form-signin'>
+        <h1 class = 'text-center'>Make Contribution Payment</h1><br>
+        <form action='process-contribution.php' method='post' class='form-signin'>
             <fieldset>
-                
                 <p>
-                    <label>Group ID: </label><br>
-                    <input type='text' id='groupId' name='groupId' placeholder="Enter Group ID" required class="form-control"/>
+                    <label for='groupId'>Group ID: </label>
+                    <?php 
+                        require 'database.php';
+        
+                        mysqli_select_db ( $mysqli , $dbname);
+
+                        $sql = sprintf("SELECT * FROM GroupRoster_R 
+                            WHERE UserID = '%s'", $_SESSION["UserID"]);
+
+                        $result = $mysqli->query($sql);
+                        //print_r($result);
+
+                        //echo '<br><br>';
+
+                        $groups = $result->fetch_all(MYSQLI_ASSOC);
+                        //print_r($groupData);
+
+                     ?>
+                    <select id='groupId' name='groupId'required class="form-control">
+                        <option>Click to Select GroupID</option>
+                        <?php 
+                            foreach ($groups as $group){
+                                echo "<option value='{$group['GroupID']}'>{$group['GroupID']}</option>";
+                            }
+                        ?>
+                    </select>
                 </p>
-                <!--<p>
-                    <label>Group Name: </label><br>
-                    <input type='text' id='groupId' name='groupId' class="form-control" readonly />
-                </p>-->
+                <p>
+                    <label for='contribution_amt'>Contribution Amount</label>
+
+                    <input type='text' id='contribution_amt' name='contribution_amt' required class="form-control" readonly />
+                </p>
+                
             </fieldset>
             <p class = 'text-center'>
-                <button type="submit" class="btn btn-primary">Join Group</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </p>
         </form>
     </div>
@@ -107,6 +132,34 @@
 
 <!-- bootstrap JS link -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+        <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var groupIdSelect = document.getElementById('groupId');
+        var contributionAmtInput = document.getElementById('contribution_amt');
+
+        groupIdSelect.addEventListener('change', function () {
+            // Get the selected Group ID
+            var selectedGroupId = groupIdSelect.value;
+
+            // Make an AJAX request to fetch contribution information
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'get_contribution_info.php?groupId=' + selectedGroupId, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Parse the JSON response
+                    var contributionInfo = JSON.parse(xhr.responseText);
+
+                    // Set the Contribution Amount input value
+                    contributionAmtInput.value = contributionInfo.amount;
+                }
+            };
+
+            xhr.send();
+        });
+    });
+</script>
 
     </body>
 </html>
