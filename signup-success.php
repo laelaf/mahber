@@ -64,9 +64,8 @@
 		
 	<main class="flex-shrink-0">
         <div class="container border shadow p-3 bg-light rounded mt-5 mb-5">
-        	<h1> Signup </h1>
-        	<p>Signup successful. 
-                You can now <a href='login.php'>Log in</a></p>
+        	<h1 class = 'text-center'>Signup Successful!</h1><br>
+        	<p class='text-center'>You can now <a href='login.php'>Log in</a>!</p>
 
 		
 		</div>

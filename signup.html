@@ -187,7 +187,28 @@
 				event.preventDefault(); // Prevent form submission
 				return false;
 			}
+			var userInput = document.getElementById('dob').value;
+			var dob = new Date(userInput);
+			
+			//calculate month difference from current date in time
+			var month_diff = Date.now() - dob.getTime();
+
+			//convert difference to date format
+			var age_dt = new Date(month_diff);
+
+			//extract year from date
+			var year = age_dt.getUTCFullYear();
+
+			//calc age of user
+			var age = Math.abs(year - 1970);
+
+			if (age < 18){
+				alert('You must be 18 Years or older to sign up!');
+				event.preventDefault();
+				return false;
+			}
 		});
+
 		</script>
 
     </body>
