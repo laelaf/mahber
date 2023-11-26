@@ -12,7 +12,7 @@
 <html lang='en'>
      <head>                     
         <meta charset="utf-8">
-        <title>Join Group</title>
+        <title>Make Contribution</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- bootstrap CSS link -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -71,21 +71,34 @@
 
   <!-- CONTENT -->
  <div class='container border shadow bg-light mt-5 mb-5 p-5'>
-        <h1 class = 'text-center'>Join ROSCA Group</h1><br>
-        <form id="joinForm" action='process-join-group.php' method='post' class='form-signin'>
+        <h1 class = 'text-center'>Make Contribution Payment</h1><br>
+        <form action='#' method='post'>
             <fieldset>
-                
                 <p>
                     <label>Group ID: </label><br>
-                    <input type='text' id='groupId' name='groupId' placeholder="Enter Group ID" required class="form-control"/>
+                    <?php 
+                        require 'database.php';
+        
+                        mysqli_select_db ( $mysqli , $dbname);
+
+                        $sql = sprintf("SELECT * FROM GroupRoster_R 
+                            WHERE UserID = '%s'", $_SESSION["UserID"]);
+
+                        $result = $mysqli->query($sql);
+
+                        $groupData = $result->fetch_assoc();
+                            var_dump($groupData);
+
+                     ?>
+                    <!--<select id='groupId' name='groupId'required class="form-control">
+
+                    </select>-->
+                    Input a select here that pulls shows the groups this user belongs to...
                 </p>
-                <!--<p>
-                    <label>Group Name: </label><br>
-                    <input type='text' id='groupId' name='groupId' class="form-control" readonly />
-                </p>-->
+                
             </fieldset>
             <p class = 'text-center'>
-                <button type="submit" class="btn btn-primary">Join Group</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </p>
         </form>
     </div>
