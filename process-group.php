@@ -126,6 +126,7 @@
 			AdminID = '$_SESSION[AdminID]',
 			GroupName = '$_POST[groupName]',
 			NumUsers = '$_POST[numUsers]',
+			NumEnrolled = '1',
 			NumRounds = '$_POST[numCycles]',
 			CyclePoolAmount = '$_POST[totalPool]',
 			ContributionAmount = '$_POST[contribution_amt]'";

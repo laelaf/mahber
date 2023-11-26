@@ -83,22 +83,24 @@
 
             $groupData = $result->fetch_assoc();
 
-            if (!$groupData) {
+            if ($groupData) {
+                $sql_2 = "INSERT INTO GroupRoster_R set  
+                GroupID = '$_POST[groupId]',
+                UserID = '$_SESSION[UserID]'";
+
+                mysqli_query($mysqli, $sql_2);
+
+                echo "<p class = 'text-center'>You have joined Group ID: " . $_POST['groupId'] . "!</p>";
+                echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
+
+            }else{
                 echo '<p class = "text-center">Group ID not found!</p>';
                 echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
-            }else{
 
-            //var_dump($groupData);
-            //exit;
+                //var_dump($groupData);
+                //exit;
 
-           $sql_2 = "INSERT INTO GroupRoster_R set  
-            GroupID = '$_POST[groupId]',
-            UserID = '$_SESSION[UserID]'";
-
-            mysqli_query($mysqli, $sql_2);
-
-            echo "<p class = 'text-center'>You have joined Group ID: " . $_POST['groupId'] . "!</p>";
-            echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
+           
             }
 
 
