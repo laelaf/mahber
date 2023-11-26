@@ -121,11 +121,11 @@
                             <input type = 'text' name = 'totalPool' id = 'totalPool' placeholder = 'Final Pool Amount' class='form-control' readonly/>
                             <small>*calculated field, Total Pool Per Cycle = Number of Users * Contribution Amount
                              </small>
+                        </p><br>
+                        <p class='text-center'>
+                            <button type="submit" class="btn btn-primary">Create Group</button>
+                            <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
                         </p>
-                        
-                                        
-                    <br/>
-                    <button type="submit" class="btn btn-primary text-center">Create Group</button>
                 </form><br>
 
                 <!--Notes:-->
