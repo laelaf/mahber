@@ -78,6 +78,24 @@
 
         $cont_payment = $_POST['contribution_amt'];
         $groupId = $_POST['groupId'];
+        $date = date("Y-m-d");
+        //echo $date;
+
+        function generatePaymentId() {
+             //Choose a random letter for the first character
+            $firstChar = "C";
+            
+             //Generate 5 random numbers for the remaining characters
+            $numbersPart = rand(10000, 99999);
+            
+            // Combine the letter and numbers to form the 6-character user ID
+            $paymentId = $firstChar . $numbersPart;
+            
+            return $paymentId;
+        }
+
+        $paymentID = generatePaymentId();
+        $contributionID = $paymentID;
 
         echo '<h1 class="text-center">Payment Confirmation</h1>';
         echo '<div class="container mt-4 p-3">
@@ -86,64 +104,44 @@
                         <th>Payment ID</th>
                         <th>User ID</th>
                         <th>Group ID</th>
-                        <th>Contribution Amount</th>
+                        <th>Amount</th>
+                        <th>Date</th>
                     </tr>
                     <tr>
-                        <td>generate ID</td>
+                        <td>' . $contributionID . '</td>
                         <td>' . $_SESSION['UserID'] . '</td>
                         <td>' . $groupId . '</td>
                         <td>' . $cont_payment . '</td>
+                        <td>' . $date . '</td>
                     </tr>
                 </table>
             </div>';
-        echo "still need to write to database!!";
 
+        /* using database*/ 
         
-            /*$sql = sprintf("SELECT * FROM GroupRoster_R 
-                            WHERE GroupID = '%s'", $_POST["groupId"]);
+        require 'database.php';
+        
+        mysqli_select_db ( $mysqli , $dbname);
 
-            $result = $mysqli->query($sql);
+        $sql_1 = "UPDATE Group_R set  
+                    GroupFund = (GroupFund + $cont_payment)
+                    WHERE GroupID = '$groupId'";
 
-            $groupData = $result->fetch_assoc();
-                //var_dump($groupData);
-                //exit;
+        mysqli_query($mysqli, $sql_1);
+        echo "wrote to Group_R";
 
-            if ($groupData) {
-                
-                $sql_2 = sprintf("SELECT NumUsers, NumEnrolled FROM Group_R 
-                            WHERE GroupID = '%s'", $_POST["groupId"]);
-                $result2 = $mysqli->query($sql_2);
-                $enrolled = $result2->fetch_assoc();
-                //var_dump($enrolled);
+        $sql_2 = "INSERT INTO Contribution_R set   
+            PaymentID = '$contributionID',
+            GroupID = '$groupId',
+            UserID = '$_SESSION[UserID]',
+            PaymentAmount = '$cont_payment',
+            ContributionDate = '$date'";
+                        
+        mysqli_query($mysqli, $sql_2);
 
-                if ($enrolled['NumEnrolled'] == $enrolled['NumUsers']){
-                    echo '<p class = "text-center">Group ' . $_POST["groupId"] . ' is full!</p>';
-                    echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
-                }else{
-                    $sql_3 = "INSERT INTO GroupRoster_R set  
-                    GroupID = '$_POST[groupId]',
-                    UserID = '$_SESSION[UserID]'";
-
-                    mysqli_query($mysqli, $sql_3);
-
-                    $sql_4 = "UPDATE Group_R set  
-                    NumEnrolled = NumEnrolled + 1
-                    WHERE GroupID = '$_POST[groupId]'";
-
-                    mysqli_query($mysqli, $sql_4);
-
-                    echo "<p class = 'text-center'>You have joined Group ID: " . $_POST['groupId'] . "!</p>";
-                    echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
-                }
-
-            }else{
-                echo '<p class = "text-center">Group ID not found!</p>';
-                echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
-           
-            }
-
-
-*/?>
+    echo "wrote to contribution!!";
+        
+?>
         <div class="container my-4 text-center">
             <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
         </div>

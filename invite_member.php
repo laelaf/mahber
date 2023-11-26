@@ -88,6 +88,7 @@
                     </p>
                     <p class='text-center'>
                         <button type="submit" class="btn btn-primary">Send Invitation</button>
+                        <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
                     </p>
                 </fieldset>
             </form>

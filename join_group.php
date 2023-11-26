@@ -84,10 +84,14 @@
                     <input type='text' id='groupId' name='groupId' class="form-control" readonly />
                 </p>-->
             </fieldset>
+            <br>
             <p class = 'text-center'>
                 <button type="submit" class="btn btn-primary">Join Group</button>
+                <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
             </p>
+
         </form>
+        
     </div>
 
  <!-- FOOTER -->

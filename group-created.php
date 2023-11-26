@@ -71,7 +71,7 @@
         <div class='container border shadow bg-light mt-5 mb-5 p-5'>
         	<h2 class='text-center'>Create New Group </h2>
         	<p class='text-center'> Group Created Sucessfully!<p>
-            <p class='text-center'>You can now <a href='dashboard.php'>View Dashboard</a></p>
+            <p class='text-center'><a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a></p>
 
 		
 		</div>

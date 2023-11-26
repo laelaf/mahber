@@ -108,9 +108,10 @@
                     <input type='text' id='contribution_amt' name='contribution_amt' required class="form-control" readonly />
                 </p>
                 
-            </fieldset>
+            </fieldset><br>
             <p class = 'text-center'>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
             </p>
         </form>
     </div>
