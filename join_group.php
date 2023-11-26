@@ -79,10 +79,10 @@
                     <label>Group ID: </label><br>
                     <input type='text' id='groupId' name='groupId' placeholder="Enter Group ID" required class="form-control"/>
                 </p>
-                <p>
+                <!--<p>
                     <label>Group Name: </label><br>
                     <input type='text' id='groupId' name='groupId' class="form-control" readonly />
-                </p>
+                </p>-->
             </fieldset>
             <p class = 'text-center'>
                 <button type="submit" class="btn btn-primary">Join Group</button>
