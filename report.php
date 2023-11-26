@@ -152,12 +152,12 @@ $specificPayouts = $specificPayoutsStmt->get_result()->fetch_all(MYSQLI_ASSOC);
             </div>
         </nav>
 
-<div class="container mt-4">
-        <h1 class="text-center">User Report</h1>
+<div class="container border shadow p-3 bg-light rounded mt-5 mb-5">
+        <h1 class="text-center">User Report</h1><br>
 
         <div class="row">
             <div class="col-md-6">
-                <h2>Groups Membership</h2>
+                <h2 class='text-center'>Groups Membership</h2>
                 <ul class="list-group">
                     <?php foreach ($memberGroups as $group): ?>
                         <li class="list-group-item">
@@ -171,7 +171,7 @@ $specificPayouts = $specificPayoutsStmt->get_result()->fetch_all(MYSQLI_ASSOC);
             </div>
 
             <div class="col-md-6">
-                <h2>Groups Administered</h2>
+                <h2 class='text-center'>Groups Administered</h2>
                 <ul class="list-group">
                     <?php foreach ($adminGroupIDs as $group): ?>
                         <li class="list-group-item">
@@ -187,7 +187,7 @@ $specificPayouts = $specificPayoutsStmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
         <div class="row mt-4">
             <div class="col-md-6">
-                <h2>Total Contributions Made</h2>
+                <h2 class='text-center'>Total Contributions Made</h2>
                 <ul class="list-group">
                     <?php foreach ($totalContributions as $contribution): ?>
                         <li class="list-group-item">
@@ -202,7 +202,7 @@ $specificPayouts = $specificPayoutsStmt->get_result()->fetch_all(MYSQLI_ASSOC);
             </div>
 
             <div class="col-md-6">
-                <h2>Total Payouts Received</h2>
+                <h2 class='text-center'>Total Payouts Received</h2>
                 <ul class="list-group">
                     <?php foreach ($totalPayouts as $payout): ?>
                         <li class="list-group-item">
@@ -219,7 +219,7 @@ $specificPayouts = $specificPayoutsStmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
         <div class="row mt-4">
             <div class="col-md-6">
-                <h2>Contribution List</h2>
+                <h2 class='text-center'>Contribution List</h2>
                 <ul class="list-group">
                     <?php foreach ($specificPayments as $payment): ?>
                         <li class="list-group-item">
@@ -235,7 +235,7 @@ $specificPayouts = $specificPayoutsStmt->get_result()->fetch_all(MYSQLI_ASSOC);
             </div>
 
             <div class="col-md-6">
-                <h2>Payouts Received</h2>
+                <h2 class='text-center'>Payouts Received</h2>
                 <ul class="list-group">
                     <?php foreach ($specificPayouts as $payout): ?>
                         <li class="list-group-item">
@@ -249,6 +249,9 @@ $specificPayouts = $specificPayoutsStmt->get_result()->fetch_all(MYSQLI_ASSOC);
                     <?php endif; ?>
                 </ul>
             </div>
+        </div>
+        <div class="container my-4 text-center">
+            <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
         </div>
     </div>
 
