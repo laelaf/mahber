@@ -12,7 +12,7 @@
 <html lang='en'>
      <head>                     
         <meta charset="utf-8">
-        <title>Make Contribution</title>
+        <title>BOOTSTRAP Mahber Contact</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- bootstrap CSS link -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -32,13 +32,13 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item navlink">
-                                <a class="nav-link" aria-current="page" href="index.php">Home</a>
+                                <a class="nav-link" aria-current="page" href="index.html">Home</a>
                             </li>
                             <li class="nav-item navlink">
-                                <a class="nav-link" href="about.php">About</a>
+                                <a class="nav-link" href="about.html">About</a>
                             </li>
                             <li class="nav-item navlink">
-                                <a class="nav-link" href="contact.php">Contact</a>
+                                <a class="nav-link" href="contact.html">Contact</a>
                             </li>
                             <li class="nav-item">
                                 <?php if (isset($_SESSION['UserID'])): ?>
@@ -71,48 +71,82 @@
 
   <!-- CONTENT -->
  <div class='container border shadow bg-light mt-5 mb-5 p-5'>
-        <h1 class = 'text-center'>Make Contribution Payment</h1><br>
-        <form action='process-contribution.php' method='post' class='form-signin'>
-            <fieldset>
-                <p>
-                    <label for='groupId'>Group ID: </label>
-                    <?php 
-                        require 'database.php';
+  
+<?php      
         
-                        mysqli_select_db ( $mysqli , $dbname);
+        require 'database.php';
 
-                        $sql = sprintf("SELECT * FROM GroupRoster_R 
-                            WHERE UserID = '%s'", $_SESSION["UserID"]);
+        $cont_payment = $_POST['contribution_amt'];
+        $groupId = $_POST['groupId'];
 
-                        $result = $mysqli->query($sql);
-                        //print_r($result);
+        echo '<h1 class="text-center">Payment Confirmation</h1>';
+        echo '<div class="container mt-4 p-3">
+                <table class="table">
+                    <tr>
+                        <th>Payment ID</th>
+                        <th>User ID</th>
+                        <th>Group ID</th>
+                        <th>Contribution Amount</th>
+                    </tr>
+                    <tr>
+                        <td>generate ID</td>
+                        <td>' . $_SESSION['UserID'] . '</td>
+                        <td>' . $groupId . '</td>
+                        <td>' . $cont_payment . '</td>
+                    </tr>
+                </table>
+            </div>';
+        echo "still need to write to database!!";
 
-                        //echo '<br><br>';
+        
+            /*$sql = sprintf("SELECT * FROM GroupRoster_R 
+                            WHERE GroupID = '%s'", $_POST["groupId"]);
 
-                        $groups = $result->fetch_all(MYSQLI_ASSOC);
-                        //print_r($groupData);
+            $result = $mysqli->query($sql);
 
-                     ?>
-                    <select id='groupId' name='groupId'required class="form-control">
-                        <option>Click to Select GroupID</option>
-                        <?php 
-                            foreach ($groups as $group){
-                                echo "<option value='{$group['GroupID']}'>{$group['GroupID']}</option>";
-                            }
-                        ?>
-                    </select>
-                </p>
-                <p>
-                    <label for='contribution_amt'>Contribution Amount</label>
+            $groupData = $result->fetch_assoc();
+                //var_dump($groupData);
+                //exit;
 
-                    <input type='text' id='contribution_amt' name='contribution_amt' required class="form-control" readonly />
-                </p>
+            if ($groupData) {
                 
-            </fieldset>
-            <p class = 'text-center'>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </p>
-        </form>
+                $sql_2 = sprintf("SELECT NumUsers, NumEnrolled FROM Group_R 
+                            WHERE GroupID = '%s'", $_POST["groupId"]);
+                $result2 = $mysqli->query($sql_2);
+                $enrolled = $result2->fetch_assoc();
+                //var_dump($enrolled);
+
+                if ($enrolled['NumEnrolled'] == $enrolled['NumUsers']){
+                    echo '<p class = "text-center">Group ' . $_POST["groupId"] . ' is full!</p>';
+                    echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
+                }else{
+                    $sql_3 = "INSERT INTO GroupRoster_R set  
+                    GroupID = '$_POST[groupId]',
+                    UserID = '$_SESSION[UserID]'";
+
+                    mysqli_query($mysqli, $sql_3);
+
+                    $sql_4 = "UPDATE Group_R set  
+                    NumEnrolled = NumEnrolled + 1
+                    WHERE GroupID = '$_POST[groupId]'";
+
+                    mysqli_query($mysqli, $sql_4);
+
+                    echo "<p class = 'text-center'>You have joined Group ID: " . $_POST['groupId'] . "!</p>";
+                    echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
+                }
+
+            }else{
+                echo '<p class = "text-center">Group ID not found!</p>';
+                echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
+           
+            }
+
+
+*/?>
+        <div class="container my-4 text-center">
+            <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
+        </div>
     </div>
 
  <!-- FOOTER -->
@@ -120,9 +154,9 @@
             <div class = 'container-fluid'>
                 <span class = 'text-muted'>
                     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                        <li class="nav-item"><a href = 'index.php' class="nav-link px-2 text-muted">Home</a></li>
-                        <li class="nav-item"><a href = 'about.php' class="nav-link px-2 text-muted">About</a></li>
-                        <li class="nav-item"><a href = 'contact.php' class="nav-link px-2 text-muted">Contact</a></li>
+                        <li class="nav-item"><a href = 'index.html' class="nav-link px-2 text-muted">Home</a></li>
+                        <li class="nav-item"><a href = 'about.html' class="nav-link px-2 text-muted">About</a></li>
+                        <li class="nav-item"><a href = 'contact.html' class="nav-link px-2 text-muted">Contact</a></li>
                         <li class="nav-item"><a href='faq.html' class="nav-link px-2 text-muted">FAQ</a></li>
                     </ul>
                     <p class='text-center text-muted'>&copy; 2023 Mahber</p>
@@ -132,34 +166,6 @@
 
 <!-- bootstrap JS link -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-
-        <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var groupIdSelect = document.getElementById('groupId');
-        var contributionAmtInput = document.getElementById('contribution_amt');
-
-        groupIdSelect.addEventListener('change', function () {
-            // Get the selected Group ID
-            var selectedGroupId = groupIdSelect.value;
-
-            // Make an AJAX request to fetch contribution information
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'get_contribution_info.php?groupId=' + selectedGroupId, true);
-
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    // Parse the JSON response
-                    var contributionInfo = JSON.parse(xhr.responseText);
-
-                    // Set the Contribution Amount input value
-                    contributionAmtInput.value = contributionInfo.amount;
-                }
-            };
-
-            xhr.send();
-        });
-    });
-</script>
 
     </body>
 </html>
