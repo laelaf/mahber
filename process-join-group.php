@@ -82,23 +82,41 @@
             $result = $mysqli->query($sql);
 
             $groupData = $result->fetch_assoc();
+                //var_dump($groupData);
+                //exit;
 
-            if (!$groupData) {
+            if ($groupData) {
+                
+                $sql_2 = sprintf("SELECT NumUsers, NumEnrolled FROM Group_R 
+                            WHERE GroupID = '%s'", $_POST["groupId"]);
+                $result2 = $mysqli->query($sql_2);
+                $enrolled = $result2->fetch_assoc();
+                //var_dump($enrolled);
+
+                if ($enrolled['NumEnrolled'] == $enrolled['NumUsers']){
+                    echo '<p class = "text-center">Group ' . $_POST["groupId"] . ' is full!</p>';
+                    echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
+                }else{
+                    $sql_3 = "INSERT INTO GroupRoster_R set  
+                    GroupID = '$_POST[groupId]',
+                    UserID = '$_SESSION[UserID]'";
+
+                    mysqli_query($mysqli, $sql_3);
+
+                    $sql_4 = "UPDATE Group_R set  
+                    NumEnrolled = NumEnrolled + 1
+                    WHERE GroupID = '$_POST[groupId]'";
+
+                    mysqli_query($mysqli, $sql_4);
+
+                    echo "<p class = 'text-center'>You have joined Group ID: " . $_POST['groupId'] . "!</p>";
+                    echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
+                }
+
+            }else{
                 echo '<p class = "text-center">Group ID not found!</p>';
                 echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
-            }else{
-
-            //var_dump($groupData);
-            //exit;
-
-           $sql_2 = "INSERT INTO GroupRoster_R set  
-            GroupID = '$_POST[groupId]',
-            UserID = '$_SESSION[UserID]'";
-
-            mysqli_query($mysqli, $sql_2);
-
-            echo "<p class = 'text-center'>You have joined Group ID: " . $_POST['groupId'] . "!</p>";
-            echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
+           
             }
 
 
