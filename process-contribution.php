@@ -124,10 +124,11 @@
         mysqli_select_db ( $mysqli , $dbname);
 
         $sql_1 = "UPDATE Group_R set  
-                    GroupFund = GroupFund + $cont_payment
-                    WHERE GroupID = $groupId";
+                    GroupFund = (GroupFund + $cont_payment)
+                    WHERE GroupID = '$groupId'";
 
         mysqli_query($mysqli, $sql_1);
+        echo "wrote to Group_R";
 
         $sql_2 = "INSERT INTO Contribution_R set   
             PaymentID = '$contributionID',
@@ -138,7 +139,7 @@
                         
         mysqli_query($mysqli, $sql_2);
 
-    echo "still need to write to database!!";
+    echo "wrote to contribution!!";
         
 ?>
         <div class="container my-4 text-center">
