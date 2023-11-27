@@ -114,7 +114,7 @@
         <!-- Co-founder 2 -->
         <div class="col-lg-3 col-sm-6 mb-4 p-2 border shadow rounded">
             <div class="card h-100">
-                <img src="images/Placeholder.png" class="card-img-top" alt="Co-founder 2">
+                <img src="images/saly.jpg" class="card-img-top" alt="Co-founder 2">
                 <div class="card-body">
                     <h5 class="card-title">Saly Camara</h5>
                     <p class="card-text">CTO</p>
@@ -124,7 +124,7 @@
         <!-- Co-founder 3 -->
         <div class="col-lg-3 col-sm-6 mb-4 p-2 border shadow rounded">
             <div class="card h-100">
-                <img src="images/Placeholder.png" class="card-img-top" alt="Co-founder 3">
+                <img src="images/raju.jpg" class="card-img-top" alt="Co-founder 3">
                 <div class="card-body">
                     <h5 class="card-title">Prudhvi Raju</h5>
                     <p class="card-text">CFO</p>
@@ -134,7 +134,7 @@
         <!-- Co-founder 4 -->
         <div class="col-lg-3 col-sm-6 mb-4 p-2 border shadow rounded">
             <div class="card h-100">
-                <img src="images/Placeholder.png" class="card-img-top" alt="Co-founder 4">
+                <img src="images/laelaf.jpg" class="card-img-top" alt="Co-founder 4">
                 <div class="card-body">
                     <h5 class="card-title">Laelaf Mengistie</h5>
                     <p class="card-text">COO</p>
