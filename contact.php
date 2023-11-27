@@ -1,8 +1,28 @@
 <!doctype html>
 <?php
+session_start();
 
-    session_start();
+$messageSent = false;
+$errorMsg = "";
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
+    $email = $_POST['email'];
+    $phoneNumber = $_POST['phoneNumber'] ?? ''; // Optional
+    $messageContent = $_POST['message'];
+
+    // Email Content
+    $to = "eishabasit2@gmail.com"; // Replace with your email address / please use an email address that belongs to your domain 
+    $subject = "New Contact Message from " . $firstName . " " . $lastName;
+    $message = "Name: " . $firstName . " " . $lastName . "\r\n" .
+               "Email: " . $email . "\r\n" .
+               "Phone: " . $phoneNumber . "\r\n" .
+               "Message: " . $messageContent;
+    $headers = "From: no-reply@yourdomain.com"; // Use an email from your domain
+
+}
+    
 ?>
 <!-- Authors:
     Saly Camara
@@ -73,35 +93,43 @@
   
   <div class="container border shadow bg-light mt-5 mb-5 p-5">
     <h2 class='text-center'>Contact Us</h2>
-    <form class = 'contact-form-signin' action='#' method='#'>
+    <form class = 'contact-form-signin' action='' method='post'>
         <div class="row mb-3">
             <div class="col">
                 <label for="firstName" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
             </div>
             <div class="col">
                 <label for="lastName" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                <input type="email" class="form-control" id="email" name="email"  placeholder="Your Email" required>
             </div>
             <div class="col-md-6">
                 <label for="phoneNumber" class="form-label">Phone Number</label>
-                <input type="tel" class="form-control" id="phoneNumber" placeholder="Phone Number (Optional)">
+                <input type="tel" class="form-control" id="phoneNumber" name = "phoneNumber" placeholder="Phone Number (Optional)">
             </div>
         </div>
         <div class="mb-3">
             <label for="message" class="form-label">Message</label>
-            <textarea class="form-control" id="message" rows="3" placeholder="Your Message" required></textarea>
+            <textarea class="form-control" id="message" rows="3" name="message" placeholder="Your Message" required></textarea>
         </div>
         <div class="d-grid gap-2">
             <button type="submit" class="btn btn-primary mx-auto">Submit</button>
         </div>
     </form>
+<?php
+    if (mail($to, $subject, $message, $headers)) {
+        $messageSent = true;
+        echo 'Message Sent!';
+    } else {
+        $errorMsg = "Error: Unable to send message.";
+    }
+?>
 </div>
 
  <!-- FOOTER -->
