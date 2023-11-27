@@ -1,8 +1,22 @@
 <!DOCTYPE html>
 <?php
+session_start();
 
-    session_start();
+$messageSent = false;
+$errorMsg = "";
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $userId = $_SESSION['UserID'];
+    $email = $_POST['inviteeEmail'];
+
+    // Email Content
+    $to = $email; // Replace with your email address / please use an email address that belongs to your domain 
+    $subject = "New Contact Message from " . $userId;
+    $message = 'Hi! Join me on Mahber at ... http://eishabasit.com/mahber/mahber3/index.php';
+    $headers = "From: no-reply@yourdomain.com"; // Use an email from your domain
+
+}
+    
 ?>
 <!-- Authors:
     Saly Camara
@@ -72,7 +86,7 @@
     <main class="flex-shrink-0">
         <div class="container border shadow p-3 bg-light rounded mt-5 mb-5">
             <!-- Invite ROSCA Members Form -->
-            <form id="inviteForm" class="mt-5 contact-form-signin">
+            <form id="inviteForm" class="mt-5 contact-form-signin" method='post' action=''>
                 <h3 class="mb-4 text-center">Invite ROSCA Members</h3>
                 <fieldset>
                     <p>
@@ -84,7 +98,7 @@
                         </div>
                     <p>
                         <label for="invitationMessage" class="form-label">Invitation Message:</label>
-                        <textarea class="form-control" id="invitationMessage" name="invitationMessage" rows="4" required placeholder='"Hi! Join me on Mahber..."'></textarea>
+                        <textarea class="form-control" id="invitationMessage" name="invitationMessage" rows="4" required placeholder='"Hi! Join me on Mahber at ... http://eishabasit.com/mahber/mahber3/index.php"' readonly></textarea>
                     </p>
                     <p class='text-center'>
                         <button type="submit" class="btn btn-primary">Send Invitation</button>
@@ -92,6 +106,14 @@
                     </p>
                 </fieldset>
             </form>
+            <?php
+                if (mail($to, $subject, $message, $headers)) {
+                    $messageSent = true;
+                    echo 'Message Sent!';
+                } else {
+                    $errorMsg = "Error: Unable to send message.";
+                }
+            ?>
         </div>
     </main>
 

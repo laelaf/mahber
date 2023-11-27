@@ -188,7 +188,7 @@ $groups = $groupStmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
 
 <!-- content end -->
-<footer class = 'footer fixed-bottom py-3 mt-auto bg-light'>
+<footer class = 'footer py-3 mt-auto bg-light'>
             <div class = 'container-fluid'>
                 <span class = 'text-muted'>
                     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
