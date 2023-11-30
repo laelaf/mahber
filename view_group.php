@@ -1,4 +1,6 @@
 <?php
+//LAELAF'S NEW VERSION
+
 session_start();
 require 'database.php';
 
@@ -133,8 +135,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'set_random_orde
                     <form action="view_group.php?group_id=<?php echo htmlspecialchars($groupId); ?>" method="post" style="margin-right: 10px;">
                         <input type="hidden" name="action" value="set_random_order">
                         <button type="submit" class="btn btn-primary">Set Randomly</button>
+                        <a href="set_payout_order.php?group_id=<?php echo htmlspecialchars($groupId); ?>&method=manual" class="btn btn-secondary">Set Manually</a>
                     </form>
-                    <a href="set_payout_order.php?group_id=<?php echo htmlspecialchars($groupId); ?>&method=manual" class="btn btn-secondary">Set Manually</a>
+                    
                 </div>
             </div>
 

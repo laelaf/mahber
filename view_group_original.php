@@ -1,4 +1,5 @@
 <?php
+//  EISHA'S OLD RETIRED VERSION
 session_start();
 require 'database.php';
 
