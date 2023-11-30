@@ -123,6 +123,7 @@ require 'database.php';
             </div>
         </nav>
 
+<main class="flex-shrink-0">
     <div class="container mt-4">
         <h2>Group Details: <?php echo htmlspecialchars($groupId); ?></h2>
         <table class="table">
@@ -162,6 +163,10 @@ require 'database.php';
             </form>
         </div>-->
     </div>
+    <div style="margin-bottom: 200px;">
+        <!-- footer spacing-->
+    </div>
+</main>
 
     <!-- ... [footer] ... -->
     <footer class = 'footer py-3 fixed-bottom mt-auto bg-light'>

@@ -54,6 +54,7 @@
 
 
   <!-- CONTENT -->
+  <main class="flex-shrink-0">
             <div class = 'container border shadow bg-light mt-5 mb-5 p-5'>
             	<h2 class='text-center'>Sign Up</h2>
             	<form id='signupForm' class = 'contact-form-signin' action='process-signup.php' method='post'> 
@@ -146,22 +147,28 @@
 					</div>
 		    	</form>
             </div>
+        <div style="margin-bottom: 200px;">
+            <!-- footer spacing-->
+        </div>
+ </main>
 
  <!-- FOOTER -->
-		<footer class = 'd-flex justify-content mb-0 py-5 border-top bg-light'>
 
-            <div class = 'container-fluid'>
-                <span class = 'text-muted'>
-                    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                        <li class="nav-item"><a href = 'index.php' class="nav-link px-2 text-muted">Home</a></li>
-                        <li class="nav-item"><a href = 'about.php' class="nav-link px-2 text-muted">About</a></li>
-                        <li class="nav-item"><a href = 'contact.php' class="nav-link px-2 text-muted">Contact</a></li>
-                        <li class="nav-item"><a href='faq.html' class="nav-link px-2 text-muted">FAQ</a></li>
-                    </ul>
-                    <p class='text-center text-muted'>&copy; 2023 Mahber</p>
-                </span>
-            </div>
-        </footer>
+<footer class='footer fixed-bottom py-3 mt-auto bg-light'>
+    <div class='container-fluid'>
+        <span class='text-muted'>
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href='index.php' class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href='about.php' class="nav-link px-2 text-muted">About</a></li>
+                <li class="nav-item"><a href='contact.php' class="nav-link px-2 text-muted">Contact</a></li>
+                <li class="nav-item"><a href='faq.html' class="nav-link px-2 text-muted">FAQ</a></li>
+                
+            </ul>
+            <p class='text-center text-muted'>&copy; 2023 Mahber</p>
+        </span>
+    </div>
+</footer>
+
 
 <!-- bootstrap JS link -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

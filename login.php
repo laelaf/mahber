@@ -92,6 +92,8 @@ $is_invalid = true;
 
   <!-- CONTENT -->
 
+  <main class="flex-shrink-0">
+
             <div class = 'container border shadow p-3 bg-light rounded mt-5 mb-5'>
             <?php if ($is_invalid): ?>
                 <em>Invalid Login</em>
@@ -109,6 +111,10 @@ $is_invalid = true;
                   </fieldset>
                 </form>
             </div>
+        <div style="margin-bottom: 200px;">
+            <!-- footer spacing-->
+        </div>
+</main>
 
  <!-- FOOTER -->
         <footer class = 'footer py-3 mt-auto fixed-bottom bg-light'>

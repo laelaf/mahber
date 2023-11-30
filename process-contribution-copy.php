@@ -70,6 +70,7 @@
         </nav>
 
   <!-- CONTENT -->
+<main class="flex-shrink-0">
  <div class='container border shadow bg-light mt-5 mb-5 p-5'>
   
 <?php      
@@ -174,6 +175,10 @@ echo $currentMonthYear;
             <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
         </div>
     </div>
+    <div style="margin-bottom: 200px;">
+        <!-- footer spacing-->
+    </div>
+</main>
 
  <!-- FOOTER -->
         <footer class = 'footer py-3 fixed-bottom mt-auto bg-light'>

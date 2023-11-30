@@ -90,6 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </nav>
 
   <!-- CONTENT -->
+<main class="flex-shrink-0">
   
 
   <div class="container border shadow bg-light mt-5 mb-5 p-5">
@@ -136,6 +137,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 ?>
 </div>
+<div style="margin-bottom: 200px;">
+    <!-- footer spacing-->
+</div>
+</main>
 
  <!-- FOOTER -->
         <footer class = 'footer py-3 fixed-bottom mt-auto bg-light'>

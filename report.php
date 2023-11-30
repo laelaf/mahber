@@ -151,7 +151,7 @@ $specificPayouts = $specificPayoutsStmt->get_result()->fetch_all(MYSQLI_ASSOC);
                 </div>
             </div>
         </nav>
-
+<main class="flex-shrink-0">
 <div class="container border shadow p-3 bg-light rounded mt-5 mb-5">
         <h1 class="text-center">User Report</h1><br>
 
@@ -254,9 +254,12 @@ $specificPayouts = $specificPayoutsStmt->get_result()->fetch_all(MYSQLI_ASSOC);
             <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
         </div>
     </div>
+    <div style="margin-bottom: 200px;">
+        <!-- footer spacing-->
+    </div>
+</main>
 
-
-    <footer class = 'footer py-3 mt-auto bg-light'>
+    <footer class = 'footer py-3 fixed-bottom mt-auto bg-light'>
             <div class = 'container-fluid'>
                 <span class = 'text-muted'>
                     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
