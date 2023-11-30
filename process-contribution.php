@@ -187,7 +187,7 @@
                         <li class="nav-item"><a href = 'index.html' class="nav-link px-2 text-muted">Home</a></li>
                         <li class="nav-item"><a href = 'about.html' class="nav-link px-2 text-muted">About</a></li>
                         <li class="nav-item"><a href = 'contact.html' class="nav-link px-2 text-muted">Contact</a></li>
-                        <li class="nav-item"><a href='faq.html' class="nav-link px-2 text-muted">FAQ</a></li>
+                        <li class="nav-item"><a href='faq.php' class="nav-link px-2 text-muted">FAQ</a></li>
                     </ul>
                     <p class='text-center text-muted'>&copy; 2023 Mahber</p>
                 </span>

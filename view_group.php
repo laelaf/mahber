@@ -126,19 +126,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'set_random_orde
                                 
 <main class="flex-shrink-0">
     <div class="container mt-3">
-            <h2 class="text-center">Group Details: <?php echo htmlspecialchars($groupName); ?> (<?php echo htmlspecialchars($groupId); ?>)</h2>
+            <h2 class="text-center">Group Details: <?php echo htmlspecialchars($groupName); ?> (<?php echo htmlspecialchars($groupId); ?>)</h2><br>
 
             <!-- Section for setting payout order -->
             <div class="payout-order-setting">
-                <h3>Set Payout Order</h3>
-                <div style="display: flex;">
+                <!--<h3 class='text-center'>Set Payout Order</h3><br>-->
                     <form action="view_group.php?group_id=<?php echo htmlspecialchars($groupId); ?>" method="post" style="margin-right: 10px;">
                         <input type="hidden" name="action" value="set_random_order">
-                        <button type="submit" class="btn btn-primary">Set Randomly</button>
-                        <a href="set_payout_order.php?group_id=<?php echo htmlspecialchars($groupId); ?>&method=manual" class="btn btn-secondary">Set Manually</a>
+                        <p class='text-center'>
+                            <button type="submit" class="btn btn-primary">Set Random Payout Order</button>
+                            <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
+                        </p>
                     </form>
-                    
-                </div>
             </div>
 
             <!-- Payout details section -->
@@ -146,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'set_random_orde
     <div class="container border shadow bg-light mt-5 mb-5 p-5">
         <div class="row">
             <div class="col">
-                <h2 class='text-center'>Payout Details for Group: <?php echo htmlspecialchars($groupId); ?></h2>
+                <h2 class='text-center'>Payout Details <!--for Group: <?php //echo htmlspecialchars($groupId); ?>--></h2>
                 <table class="table table-responsive table-hover">
                     <thead class="thead-light">
                         <tr>
@@ -173,9 +172,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'set_random_orde
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                <div class="container my-4 text-center">
+                <!--<div class="container my-4 text-center">
                     <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
@@ -204,9 +203,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'set_random_orde
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <div class="container my-4 text-center">
+           <!-- <div class="container my-4 text-center">
                 <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
-            </div>
+            </div>-->
     </div>
 </div>
 <div style="margin-bottom: 200px;">
@@ -221,7 +220,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'set_random_orde
                         <li class="nav-item"><a href = 'index.php' class="nav-link px-2 text-muted">Home</a></li>
                         <li class="nav-item"><a href = 'about.php' class="nav-link px-2 text-muted">About</a></li>
                         <li class="nav-item"><a href = 'contact.php' class="nav-link px-2 text-muted">Contact</a></li>
-                        <li class="nav-item"><a href='faq.html' class="nav-link px-2 text-muted">FAQ</a></li>
+                        <li class="nav-item"><a href='faq.php' class="nav-link px-2 text-muted">FAQ</a></li>
                     </ul>
                     <p class='text-center text-muted'>&copy; 2023 Mahber</p>
                 </span>
