@@ -5,17 +5,20 @@
     Prudhvi Raju
     Laelaf Mengistie-->
 <html lang='en'>
-    <head>
+     <head>                     
         <meta charset="utf-8">
-        <title>Signed Up!</title>
+        <title>Process Signup</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- bootstrap CSS link -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <link rel = 'stylesheet' href = 'style2.css'/>
+        <link rel = 'stylesheet' href = 'form.css'/>
+        
     </head>
 
     <body class="d-flex flex-column h-100" style = 'background-color: #d1edf2;'>
-<!-- #7EF9FF  or #E5F3FD for a very muted color, #D1EDF2, #29C5F6,  #77d4fc mahber color-->
+
+   <!-- NAV -->
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container">
                 <a class="navbar-brand" href="index.php">                <img class="logo" width="150" height="55" src = 'images/mahber_logo2.png'></img></a>
@@ -47,11 +50,8 @@
                     </div>
             </div>
         </nav>
-		
-	<main class="flex-shrink-0">
-        <div class="container border shadow p-3 bg-light rounded mt-5 mb-5">
-
-
+<main class="flex-shrink-0">
+    <div class = 'container border shadow p-3 bg-light rounded mt-5 mb-5'>
 		<?php
 
 		/*Personal Info Validation*/
@@ -140,7 +140,21 @@
 		
 		mysqli_select_db ( $mysqli , $dbname);
 
-		$sql = "INSERT INTO User_R set 	UserID = '$userID',
+
+		/* RESTRICT SAME USERNAME */
+
+		$username = $_POST['username'];
+		$sql_2 = 	"SELECT * FROM User_R
+					WHERE Username = '$username'";
+		$result = mysqli_query($mysqli, $sql_2);
+
+		if ($result->num_rows > 0){
+			echo "<p class='text-center'><em>Error: </em>Username already exists!</p>";
+			echo '<p class="text-center"><a href="signup.html" class="btn btn-primary mx-2 ">Return to Sign Up</a></p>';
+
+		} else{
+
+			$sql = "INSERT INTO User_R set 	UserID = '$userID',
 										FirstName = '$_POST[first_name]',
 										LastName = '$_POST[last_name]',
 										Street = '$_POST[street]',
@@ -156,47 +170,16 @@
 
 		header("Location: signup-success.php");
 
-		//Close connection
-		//mysqli_close($mysqli);
-
-		/*					THIS WAS MY ATTEMPT TO PREVENT SQL INJECTION, BUT THIS DIDN'T WORK
-		$stmt = $mysqli->stmt_init();
-
-		If ( ! $stmt->prepare($sql)) {
-			die("SQL error: " . $mysqli->error);
 		}
-
-		$stmt->bind_param("sssssssssss",
-						$userID,
-						$_POST['first_name'],
-						$_POST['last_name'],
-						$_POST['street'],
-						$_POST['city'],
-						$_POST['state'],
-						$_POST['zip_code'],
-						$_POST['phone'],
-						$_POST['email'],
-						$_POST['username'],
-						$_POST['password']);
-
-		if ($stmt->execute()) {
-		    echo "Signup successful";
-		} else {
-		    die($mysqli->error . " " . $mysqli->errno);
-		}
-
-
-		$stmt->close();
-		$mysqli->close();
-		*/
 
 		?>
-		</div>
-		<div style="margin-bottom: 200px;">
-		    <!-- footer spacing-->
-		</div>
-	</main>
-	<footer class = 'footer py-3 mt-auto fixed-bottom bg-light'>
+      </div>
+        <div style="margin-bottom: 200px;">
+            <!-- footer spacing-->
+        </div>
+</main>
+<!-- FOOTER -->
+        <footer class = 'footer py-3 mt-auto fixed-bottom bg-light'>
             <div class = 'container-fluid'>
                 <span class = 'text-muted'>
                     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
@@ -210,6 +193,8 @@
             </div>
         </footer>
 
-        <!-- bootstrap JS link -->
+<!-- bootstrap JS link -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
     </body>
+</html>
