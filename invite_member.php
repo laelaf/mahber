@@ -115,6 +115,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
             ?>
         </div>
+        <div style="margin-bottom: 200px;">
+            <!-- footer spacing-->
+        </div>
     </main>
 
      <!-- FOOTER -->

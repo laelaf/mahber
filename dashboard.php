@@ -178,6 +178,9 @@ $groups = $groupStmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
     </div>
 </div>
+<div style="margin-bottom: 200px;">
+    <!-- footer spacing-->
+</div>
 </main>
 
 
@@ -188,7 +191,7 @@ $groups = $groupStmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
 
 <!-- content end -->
-<footer class = 'footer py-3 mt-auto bg-light'>
+<footer class = 'footer py-3 fixed-bottom mt-auto bg-light'>
             <div class = 'container-fluid'>
                 <span class = 'text-muted'>
                     <ul class="nav justify-content-center border-bottom pb-3 mb-3">

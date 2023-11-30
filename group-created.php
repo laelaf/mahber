@@ -75,6 +75,9 @@
 
 		
 		</div>
+        <div style="margin-bottom: 200px;">
+            <!-- footer spacing-->
+        </div>
 	</main>
 	<footer class = 'footer py-3 mt-auto fixed-bottom bg-light'>
             <div class = 'container-fluid'>

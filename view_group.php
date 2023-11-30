@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'set_random_orde
      </div>
  </nav>         
                                 
-
+<main class="flex-shrink-0">
     <div class="container mt-3">
             <h2 class="text-center">Group Details: <?php echo htmlspecialchars($groupName); ?> (<?php echo htmlspecialchars($groupId); ?>)</h2>
 
@@ -206,9 +206,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'set_random_orde
             </div>
     </div>
 </div>
-
+<div style="margin-bottom: 200px;">
+    <!-- footer spacing-->
+</div>
+</main>
         <!-- Footer content -->
-       <footer class = 'footer py-3 mt-auto bg-light'>
+       <footer class = 'footer py-3 fixed-bottom mt-auto bg-light'>
             <div class = 'container-fluid'>
                 <span class = 'text-muted'>
                     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
