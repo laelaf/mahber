@@ -96,7 +96,7 @@
 
                 if ($enrolled['NumEnrolled'] == $enrolled['NumUsers']){
                     echo '<p class = "text-center">Group ' . $_POST["groupId"] . ' is full!</p>';
-                    echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
+                    echo "<p class = 'text-center'><a href='dashboard.php' class='btn btn-primary mx-2'>Return to Dashboard</a>";
                 }else{
                     $sql_3 = "INSERT INTO GroupRoster_R set  
                     GroupID = '$_POST[groupId]',
@@ -111,15 +111,14 @@
                     mysqli_query($mysqli, $sql_4);
 
                     echo "<p class = 'text-center'>You have joined Group ID: " . $_POST['groupId'] . "!</p>";
-                    echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
+                    echo "<p class = 'text-center'><a href='dashboard.php' class='btn btn-primary mx-2'>Return to Dashboard</a>";
                 }
 
             }else{
                 echo '<p class = "text-center">Group ID not found!</p>';
-                echo "<p class = 'text-center'>Return to <a href='dashboard.php'>User Dashboard</a>.</p>";
+                echo "<p class = 'text-center'><a href='dashboard.php' class='btn btn-primary mx-2'>Return to Dashboard</a>";
            
             }
-
 
 ?>
     </div>

@@ -68,22 +68,56 @@
                     </div>
             </div>
         </nav>
-
+<!-- COPY 
+<form id="joinForm" action='process-join-group.php' method='post' class='form-signin'>
+    <fieldset>
+        
+        <p>
+            <label>Group ID: </label><br>
+            <input type='text' id='groupId' name='groupId' placeholder="Enter Group ID" required class="form-control"/>
+        </p>
+    </fieldset>
+    <br>
+    <p class = 'text-center'>
+        <button type="submit" class="btn btn-primary">Join Group</button>
+        <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
+    </p>
+</form>
+END COPY -->
   <!-- CONTENT -->
 <main class="flex-shrink-0">
  <div class='container border shadow bg-light mt-5 mb-5 p-5'>
         <h1 class = 'text-center'>Join ROSCA Group</h1><br>
         <form id="joinForm" action='process-join-group.php' method='post' class='form-signin'>
             <fieldset>
-                
                 <p>
-                    <label>Group ID: </label><br>
-                    <input type='text' id='groupId' name='groupId' placeholder="Enter Group ID" required class="form-control"/>
+                    <label for='groupId'>Group ID: </label>
+                    <?php 
+                        require 'database.php';
+
+                        mysqli_select_db ( $mysqli , $dbname);
+
+                        $sql = "SELECT GroupID, GroupName FROM Group_R";
+
+                        $result = $mysqli->query($sql);
+                        //print_r($result);
+
+                        //echo '<br><br>';
+
+                        $groups = $result->fetch_all(MYSQLI_ASSOC);
+                        //print_r($groupData);
+
+                     ?>
+                    <select id='groupId' name='groupId'required class="form-control">
+                        <option>Click to Select GroupID</option>
+                        <?php 
+                            foreach ($groups as $group){
+                                echo "<option value='{$group['GroupID']}'>{$group['GroupID']} - {$group['GroupName']}</option>";
+                            }
+                        ?>
+                    </select>
                 </p>
-                <!--<p>
-                    <label>Group Name: </label><br>
-                    <input type='text' id='groupId' name='groupId' class="form-control" readonly />
-                </p>-->
+               
             </fieldset>
             <br>
             <p class = 'text-center'>
