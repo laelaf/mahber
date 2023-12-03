@@ -28,7 +28,7 @@ $groupStmt->execute();
 $groups = $groupStmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
 
-
+/* CAUSES CODE TO BREAK BECAUSE NEW GROUPS DON'T HAVE PAYMENTS TO PERORM FUNCTION*/
 /*function getPaymentStatus($paymentDate) {
     $currentDate = new DateTime();
     $paymentDateTime = new DateTime($paymentDate);
