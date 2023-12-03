@@ -109,7 +109,7 @@
 		}
 
 		/* password hash not used yet*/
-		//$password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+		$password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 
 		/* create user id */
@@ -164,7 +164,7 @@
 										Phone = '$_POST[phone]',
 										Email = '$_POST[email]',
 										Username = '$_POST[username]',
-										Password = '$_POST[password]'";
+										Password = '$password_hash'";
 
 		mysqli_query($mysqli, $sql);
 
