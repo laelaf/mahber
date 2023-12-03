@@ -158,96 +158,108 @@ $specificPayouts = $specificPayoutsStmt->get_result()->fetch_all(MYSQLI_ASSOC);
         <div class="row">
             <div class="col-md-6">
                 <h2 class='text-center'>Groups Membership</h2>
-                <ul class="list-group">
-                    <?php foreach ($memberGroups as $group): ?>
-                        <li class="list-group-item">
-                            <?php echo htmlspecialchars($group['GroupID']) . " - " . htmlspecialchars($group['GroupName']); ?>
-                        </li>
-                    <?php endforeach; ?>
-                    <?php if (empty($memberGroups)): ?>
-                        <p>No group memberships.</p>
-                    <?php endif; ?>
-                </ul>
+                <div class='border bg-light rounded'>
+                    <ul class="list-group">
+                        <?php foreach ($memberGroups as $group): ?>
+                            <li class="list-group-item">
+                                <?php echo htmlspecialchars($group['GroupID']) . " - " . htmlspecialchars($group['GroupName']); ?>
+                            </li>
+                        <?php endforeach; ?>
+                        <?php if (empty($memberGroups)): ?>
+                            <p>No group memberships.</p>
+                        <?php endif; ?>
+                    </ul>
+                </div>
             </div>
 
             <div class="col-md-6">
                 <h2 class='text-center'>Groups Administered</h2>
-                <ul class="list-group">
-                    <?php foreach ($adminGroupIDs as $group): ?>
-                        <li class="list-group-item">
-                            <?php echo htmlspecialchars($group['GroupID']) . " - " . htmlspecialchars($group['GroupName']); ?>
-                        </li>
-                    <?php endforeach; ?>
-                    <?php if (empty($adminGroupIDs)): ?>
-                        <p>No administered groups.</p>
-                    <?php endif; ?>
-                </ul>
+                <div class='border bg-light rounded'>
+                    <ul class="list-group">
+                        <?php foreach ($adminGroupIDs as $group): ?>
+                            <li class="list-group-item">
+                                <?php echo htmlspecialchars($group['GroupID']) . " - " . htmlspecialchars($group['GroupName']); ?>
+                            </li>
+                        <?php endforeach; ?>
+                        <?php if (empty($adminGroupIDs)): ?>
+                            <p>No administered groups.</p>
+                        <?php endif; ?>
+                    </ul>
+                </div>
             </div>
         </div>
 
         <div class="row mt-4">
             <div class="col-md-6">
                 <h2 class='text-center'>Total Contributions Made</h2>
-                <ul class="list-group">
-                    <?php foreach ($totalContributions as $contribution): ?>
-                        <li class="list-group-item">
-                            Group ID: <?php echo htmlspecialchars($contribution['GroupID']); ?> - 
-                            Total Contribution: <?php echo htmlspecialchars(number_format((float)$contribution['TotalContribution'], 0)); ?>
-                        </li>
-                    <?php endforeach; ?>
-                    <?php if (empty($totalContributions)): ?>
-                        <p>No contributions have been made.</p>
-                    <?php endif; ?>
-                </ul>
+                <div class='border bg-light rounded'>
+                    <ul class="list-group">
+                        <?php foreach ($totalContributions as $contribution): ?>
+                            <li class="list-group-item">
+                                Group ID: <?php echo htmlspecialchars($contribution['GroupID']); ?> - 
+                                Total Contribution: <?php echo htmlspecialchars(number_format((float)$contribution['TotalContribution'], 0)); ?>
+                            </li>
+                        <?php endforeach; ?>
+                        <?php if (empty($totalContributions)): ?>
+                            <p>No contributions have been made.</p>
+                        <?php endif; ?>
+                    </ul>
+                </div>
             </div>
 
             <div class="col-md-6">
                 <h2 class='text-center'>Total Payouts Received</h2>
-                <ul class="list-group">
-                    <?php foreach ($totalPayouts as $payout): ?>
-                        <li class="list-group-item">
-                            Group ID: <?php echo htmlspecialchars($payout['GroupID']); ?> - 
-                            Total Payout: <?php echo htmlspecialchars(number_format((float)$payout['TotalPayout'], 0)); ?>
-                        </li>
-                    <?php endforeach; ?>
-                    <?php if (empty($totalPayouts)): ?>
-                        <p>No payouts have been received.</p>
-                    <?php endif; ?>
-                </ul>
+                <div class='border bg-light rounded'>
+                    <ul class="list-group">
+                        <?php foreach ($totalPayouts as $payout): ?>
+                            <li class="list-group-item">
+                                Group ID: <?php echo htmlspecialchars($payout['GroupID']); ?> - 
+                                Total Payout: <?php echo htmlspecialchars(number_format((float)$payout['TotalPayout'], 0)); ?>
+                            </li>
+                        <?php endforeach; ?>
+                        <?php if (empty($totalPayouts)): ?>
+                            <p>No payouts have been received.</p>
+                        <?php endif; ?>
+                    </ul>
+                </div>
             </div>
         </div>
 
         <div class="row mt-4">
             <div class="col-md-6">
                 <h2 class='text-center'>Contribution List</h2>
-                <ul class="list-group">
-                    <?php foreach ($specificPayments as $payment): ?>
-                        <li class="list-group-item">
-                            Group ID: <?php echo htmlspecialchars($payment['GroupID']); ?> - 
-                            Payment: <?php echo htmlspecialchars(number_format((float)$payment['PaymentAmount'], 0)); ?> on 
-                            <?php echo htmlspecialchars($payment['ContributionDate']); ?>
-                        </li>
-                    <?php endforeach; ?>
-                    <?php if (empty($specificPayments)): ?>
-                        <p>No specific payments have been made.</p>
-                    <?php endif; ?>
-                </ul>
+                <div class='border bg-light rounded'>
+                    <ul class="list-group">
+                        <?php foreach ($specificPayments as $payment): ?>
+                            <li class="list-group-item">
+                                Group ID: <?php echo htmlspecialchars($payment['GroupID']); ?> - 
+                                Payment: <?php echo htmlspecialchars(number_format((float)$payment['PaymentAmount'], 0)); ?> on 
+                                <?php echo htmlspecialchars($payment['ContributionDate']); ?>
+                            </li>
+                        <?php endforeach; ?>
+                        <?php if (empty($specificPayments)): ?>
+                            <p>No specific payments have been made.</p>
+                        <?php endif; ?>
+                    </ul>
+                </div>
             </div>
 
             <div class="col-md-6">
                 <h2 class='text-center'>Payouts Received</h2>
-                <ul class="list-group">
-                    <?php foreach ($specificPayouts as $payout): ?>
-                        <li class="list-group-item">
-                            Group ID: <?php echo htmlspecialchars($payout['GroupID']); ?> - 
-                            Payout: <?php echo htmlspecialchars(number_format((float)$payout['PayoutAmount'], 0)); ?> on 
-                            <?php echo htmlspecialchars($payout['PayoutDate']); ?>
-                        </li>
-                    <?php endforeach; ?>
-                    <?php if (empty($specificPayouts)): ?>
-                        <p>No specific payouts have been received.</p>
-                    <?php endif; ?>
-                </ul>
+                <div class='border bg-light rounded'>
+                    <ul class="list-group">
+                        <?php foreach ($specificPayouts as $payout): ?>
+                            <li class="list-group-item">
+                                Group ID: <?php echo htmlspecialchars($payout['GroupID']); ?> - 
+                                Payout: <?php echo htmlspecialchars(number_format((float)$payout['PayoutAmount'], 0)); ?> on 
+                                <?php echo htmlspecialchars($payout['PayoutDate']); ?>
+                            </li>
+                        <?php endforeach; ?>
+                        <?php if (empty($specificPayouts)): ?>
+                            <p>No specific payouts have been received.</p>
+                        <?php endif; ?>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="container my-4 text-center">
