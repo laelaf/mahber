@@ -15,21 +15,29 @@ require 'database.php';
 
     //var_dump($user);
     //exit;
-
     if ($user) {
-
-        if ($_POST['Password'] == $user['Password']) {
-            
-            session_start();
-            session_regenerate_id();
-            $_SESSION['UserID'] = $user['UserID'];
-            $_SESSION['Username'] = $_POST['Username'];
-
-            header("Location: dashboard.php");
-            exit;
-            
+            // check password unhashed
+            if (password_verify($_POST['Password'], $user['Password'])) {
+                
+                session_start();
+                session_regenerate_id();
+                $_SESSION['UserID'] = $user['UserID'];
+                $_SESSION['Username'] = $_POST['Username'];
+        
+                header("Location: dashboard.php");
+                exit;
+            //for test data only (not hashed anyway)
+            } else if (isset($_POST['Password']) && $_POST['Password'] == $user['Password']) {
+                
+                session_start();
+                session_regenerate_id();
+                $_SESSION['UserID'] = $user['UserID'];
+                $_SESSION['Username'] = $_POST['Username'];
+        
+                header("Location: dashboard.php");
+                exit;
+            }
         }
-    }
 
 $is_invalid = true;
 
