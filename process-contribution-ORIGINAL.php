@@ -145,15 +145,15 @@ echo $currentMonthYear;
             $result = $mysqli->query($sql);
 
             $paidStatus = $result->fetch_assoc();
-            print_r($paidStatus);
-            echo $paidStatus['HasPaid'];
+            //print_r($paidStatus);
+            //echo $paidStatus['HasPaid'];
            
-           /*$sql_1 = "UPDATE Group_R set  
+           $sql_1 = "UPDATE Group_R set  
                     GroupFund = (GroupFund + $cont_payment)
                     WHERE GroupID = '$groupId'";
 
             mysqli_query($mysqli, $sql_1);
-            echo "wrote to Group_R";
+            //echo "wrote to Group_R";
 
             $sql_2 = "INSERT INTO Contribution_R set   
                 PaymentID = '$contributionID',
@@ -164,7 +164,7 @@ echo $currentMonthYear;
                             
             mysqli_query($mysqli, $sql_2);
 
-            echo "wrote to contribution!!";*/
+            //echo "wrote to contribution!!";
             
         /*}else{
             echo 'Error: Action could not be completed';
