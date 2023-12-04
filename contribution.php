@@ -73,7 +73,7 @@
 <main class="flex-shrink-0">
  <div class='container border shadow bg-light mt-5 mb-5 p-5'>
         <h1 class = 'text-center'>Make Contribution Payment</h1><br>
-        <form action='process-contribution.php' method='post' class='form-signin'>
+        <form action='process-contribution-ORIGINAL.php' method='post' class='form-signin'>
             <fieldset>
                 <p>
                     <label for='groupId'>Group ID: </label>

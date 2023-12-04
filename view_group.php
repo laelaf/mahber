@@ -11,38 +11,8 @@ if (!isset($_GET['group_id'])) {
 
 $groupId = $_GET['group_id'];
 
-// Query for Payout and Contribution Details
-$groupDetailsStmt = $mysqli->prepare("
-    SELECT 
-        u.UserID, u.FirstName, u.LastName, u.Email, u.Phone, 
-        gr.PayoutOrder, 
-        c.PaymentAmount, c.ContributionDate, 
-        p.PayoutAmount, p.PayoutDate
-    FROM 
-        GroupRoster_R gr
-    JOIN User_R u ON gr.UserID = u.UserID
-    LEFT JOIN Contribution_R c ON gr.GroupID = c.GroupID AND gr.UserID = c.UserID
-    LEFT JOIN Payout_R p ON gr.GroupID = p.GroupID AND gr.UserID = p.UserID
-    WHERE 
-        gr.GroupID = ?
-    ORDER BY 
-        gr.PayoutOrder, u.UserID, c.ContributionDate, p.PayoutDate
-");
-$groupDetailsStmt->bind_param("s", $groupId);
-$groupDetailsStmt->execute();
-$result = $groupDetailsStmt->get_result();
-$groupDetails = $result->fetch_all(MYSQLI_ASSOC);
-
-// Check if payout order is already set
-$payoutOrderCheckStmt = $mysqli->prepare("SELECT COUNT(*) as count FROM GroupRoster_R WHERE GroupID = ? AND PayoutOrder IS NOT NULL");
-$payoutOrderCheckStmt->bind_param("s", $groupId);
-$payoutOrderCheckStmt->execute();
-$payoutOrderCheckResult = $payoutOrderCheckStmt->get_result()->fetch_assoc();
-
-$payoutOrderSet = $payoutOrderCheckResult['count'] > 0;
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'set_random_order') {
-    // Logic for random payout order setting
+// Function to set random payout order
+function setRandomPayoutOrder($groupId, $mysqli) {
     $membersStmt = $mysqli->prepare("SELECT UserID FROM GroupRoster_R WHERE GroupID = ?");
     $membersStmt->bind_param("s", $groupId);
     $membersStmt->execute();
@@ -56,19 +26,55 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'set_random_orde
         $updateStmt->bind_param("iss", $orders[$index], $groupId, $member['UserID']);
         $updateStmt->execute();
     }
-
-    // Refresh group details after updating payout order
-    $groupDetailsStmt->execute();
-    $result = $groupDetailsStmt->get_result();
-    $groupDetails = $result->fetch_all(MYSQLI_ASSOC);
 }
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'set_random_order') {
+    setRandomPayoutOrder($groupId, $mysqli);
+}
+
+// Query for Contribution Details
+$contributionsStmt = $mysqli->prepare("
+    SELECT 
+        u.UserID, u.FirstName, u.LastName,
+        c.PaymentAmount, c.ContributionDate
+    FROM 
+        GroupRoster_R gr
+    JOIN User_R u ON gr.UserID = u.UserID
+    LEFT JOIN Contribution_R c ON gr.GroupID = c.GroupID AND gr.UserID = c.UserID
+    WHERE 
+        gr.GroupID = ?
+    ORDER BY 
+        u.UserID, c.ContributionDate
+");
+$contributionsStmt->bind_param("s", $groupId);
+$contributionsStmt->execute();
+$contributions = $contributionsStmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+// Query for Payout Details with precedence for those with a payout order
+$payoutsStmt = $mysqli->prepare("
+    SELECT 
+        u.UserID, u.FirstName, u.LastName, u.Email, u.Phone, 
+        p.PayoutAmount, p.PayoutDate, gr.PayoutOrder
+    FROM 
+        GroupRoster_R gr
+    JOIN User_R u ON gr.UserID = u.UserID
+    LEFT JOIN Payout_R p ON gr.GroupID = p.GroupID AND gr.UserID = p.UserID
+    WHERE 
+        gr.GroupID = ?
+    ORDER BY 
+        gr.PayoutOrder DESC, u.UserID
+");
+$payoutsStmt->bind_param("s", $groupId);
+$payoutsStmt->execute();
+$payouts = $payoutsStmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
 ?>
 
 <!doctype html>
 <html lang='en'>
     <head>                     
         <meta charset="utf-8">
-        <title>View Group - <?php echo htmlspecialchars($groupName); ?></title>
+        <title>View Group Details</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- bootstrap CSS link -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -126,89 +132,83 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'set_random_orde
                                 
 <main class="flex-shrink-0">
     <div class="container mt-3">
-            <h2 class="text-center">Group Details: <?php echo htmlspecialchars($groupName); ?> (<?php echo htmlspecialchars($groupId); ?>)</h2><br>
+        <h2 class="text-center">Group Details: <?php echo htmlspecialchars($groupId); ?></h2>
 
             <!-- Section for setting payout order -->
             <div class="payout-order-setting">
-                <!--<h3 class='text-center'>Set Payout Order</h3><br>-->
-                    <form action="view_group.php?group_id=<?php echo htmlspecialchars($groupId); ?>" method="post" style="margin-right: 10px;">
-                        <input type="hidden" name="action" value="set_random_order">
-                        <p class='text-center'>
-                            <button type="submit" class="btn btn-primary">Set Random Payout Order</button>
-                            <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
-                        </p>
-                    </form>
+                <div class="text-center">
+                    <?php if (!$payoutOrderSet): ?>
+                        <form action="view_group.php?group_id=<?php echo htmlspecialchars($groupId); ?>" method="post" style="margin-right: 10px;">
+                            <input type="hidden" name="action" value="set_random_order">
+                            <p>
+                                <button type="submit" class="btn btn-primary">Set Payout Randomly</button>
+                                <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
+                            </p>
+                        </form>
+
+                    <?php else: ?>
+                        <p>Payout order has already been assigned.</p>
+                    <?php endif; ?>
+                   
+                </div>
             </div>
-
-            <!-- Payout details section -->
-            <!-- Payout Details Table -->
+        <!-- Contribution details section -->
     <div class="container border shadow bg-light mt-5 mb-5 p-5">
-        <div class="row">
-            <div class="col">
-                <h2 class='text-center'>Payout Details <!--for Group: <?php //echo htmlspecialchars($groupId); ?>--></h2>
-                <table class="table table-responsive table-hover">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>User ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Total Payouts</th>
-                            <th>Latest Payout Date</th>
-                            <th>Payout Order</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($groupDetails as $detail): ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($detail['UserID']); ?></td>
-                            <td><?php echo htmlspecialchars($detail['FirstName'] . ' ' . $detail['LastName']); ?></td>
-                            <td><?php echo htmlspecialchars($detail['Email']); ?></td>
-                            <td><?php echo htmlspecialchars($detail['Phone']); ?></td>
-                            <td><?php echo htmlspecialchars(number_format($detail['PayoutAmount'], 2)); ?></td>
-                            <td><?php echo htmlspecialchars($detail['PayoutDate'] ?? 'N/A'); ?></td>
-                            <td><?php echo htmlspecialchars($detail['PayoutOrder'] ?? 'N/A'); ?></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-                <!--<div class="container my-4 text-center">
-                    <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
-                </div>-->
-            </div>
-        </div>
-    </div>
-
-
-    <div class="container border shadow bg-light mt-5 mb-5 p-5">
-            <!-- Contribution details section -->
-            <h3 class="mt-4 text-center">Contribution Details</h3>
-            <table class="table table-responsive table-hover">
-                <thead class="thead-light">
+        <h3 class="mt-4 text-center">Contribution Details</h3>
+        <table class="table table-responsive table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Payment Amount</th>
+                    <th>Contribution Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($contributions as $detail): ?>
                     <tr>
-                        <th>User ID</th>
-                        <th>Name</th>
-                        <th>Payment Amount</th>
-                        <th>Contribution Date</th>
+                        <td><?php echo htmlspecialchars($detail['UserID']); ?></td>
+                        <td><?php echo htmlspecialchars($detail['FirstName'] . ' ' . $detail['LastName']); ?></td>
+                        <td><?php echo htmlspecialchars($detail['PaymentAmount'] ? number_format($detail['PaymentAmount'], 2) : 'N/A'); ?></td>
+                        <td><?php echo htmlspecialchars($detail['ContributionDate'] ?? 'N/A'); ?></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($groupDetails as $detail): ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($detail['UserID']); ?></td>
-                            <td><?php echo htmlspecialchars($detail['FirstName'] . ' ' . $detail['LastName']); ?></td>
-                            <td><?php echo htmlspecialchars($detail['PaymentAmount'] ? number_format($detail['PaymentAmount'], 2) : 'N/A'); ?></td>
-                            <td><?php echo htmlspecialchars($detail['ContributionDate'] ?? 'N/A'); ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-           <!-- <div class="container my-4 text-center">
-                <a href="dashboard.php" class="btn btn-primary mx-2">Return to Dashboard</a>
-            </div>-->
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
-</div>
-<div style="margin-bottom: 200px;">
+
+        <!-- Payout details section -->
+    <div class="container border shadow bg-light mt-5 mb-5 p-5">
+        <h3 class="mt-4 text-center">Payout Details</h3>
+        <table class="table table-responsive table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Total Payouts</th>
+                    <th>Latest Payout Date</th>
+                    <th>Payout Order</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($payouts as $detail): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($detail['UserID']); ?></td>
+                        <td><?php echo htmlspecialchars($detail['FirstName'] . ' ' . $detail['LastName']); ?></td>
+                        <td><?php echo htmlspecialchars($detail['Email']); ?></td>
+                        <td><?php echo htmlspecialchars($detail['Phone']); ?></td>
+                        <td><?php echo htmlspecialchars(number_format($detail['PayoutAmount'], 2)); ?></td>
+                        <td><?php echo htmlspecialchars($detail['PayoutDate'] ?? 'N/A'); ?></td>
+                        <td><?php echo htmlspecialchars($detail['PayoutOrder'] ?? 'N/A'); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <div style="margin-bottom: 200px;">
     <!-- footer spacing-->
 </div>
 </main>
